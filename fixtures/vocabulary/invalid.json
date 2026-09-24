@@ -2,5 +2,7 @@
   "world.consequence": {"key":"piracy"},
   "faction.reputation": {"factionId":42,"delta":"five"},
   "story.flag": {"flag":"x","value":"true"},
-  "evidence.add": {"evidenceId":"x","unexpected":true}
+  "evidence.add": {"evidenceId":"x","unexpected":true},
+  "story.stage": {"lineId":"lore_main","stage":"four"},
+  "trait.add": {"traitId":"autonomy"}
 }

@@ -7,6 +7,8 @@
     {"type":"story.flag","strict":true,"payload":{"flag":{"type":"string","required":true},"value":{"type":"boolean","required":true}}},
     {"type":"evidence.add","strict":true,"payload":{"evidenceId":{"type":"string","required":true}}},
     {"type":"economy.telemetry","strict":true,"payload":{"metric":{"type":"string","required":true},"amount":{"type":"number","required":true}}},
-    {"type":"thread.resonance","strict":true,"payload":{"delta":{"type":"number","required":true},"source":{"type":"string","required":false}}}
+    {"type":"thread.resonance","strict":true,"payload":{"delta":{"type":"number","required":true},"source":{"type":"string","required":false}}},
+    {"type":"story.stage","strict":true,"payload":{"lineId":{"type":"string","required":true},"stage":{"type":"number","required":true}}},
+    {"type":"trait.add","strict":true,"payload":{"traitId":{"type":"string","required":true},"delta":{"type":"number","required":true}}}
   ]
 }

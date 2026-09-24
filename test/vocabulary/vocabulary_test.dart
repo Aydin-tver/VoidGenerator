@@ -6,7 +6,7 @@ import 'package:void_event_engine/void_event_engine.dart';
 
 void main() {
   test('default vocabulary contains all canonical types', () {
-    expect(DomainVocabularyDefaults.catalog.definitions.length, 7);
+    expect(DomainVocabularyDefaults.catalog.definitions.length, 9);
     for (final type in DomainVocabulary.all) {
       expect(DomainVocabularyDefaults.catalog.contains(type), isTrue, reason: type);
     }

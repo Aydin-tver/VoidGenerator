@@ -13,6 +13,8 @@ class DomainVocabulary {
   static const evidenceAdd = 'evidence.add';
   static const economyTelemetry = 'economy.telemetry';
   static const threadResonance = 'thread.resonance';
+  static const storyStage = 'story.stage';
+  static const traitAdd = 'trait.add';
 
   static const all = <String>[
     worldConsequence,
@@ -22,6 +24,8 @@ class DomainVocabulary {
     evidenceAdd,
     economyTelemetry,
     threadResonance,
+    storyStage,
+    traitAdd,
   ];
 }
 
@@ -131,6 +135,20 @@ class DomainVocabularyDefaults {
         fields: [
           VocabularyField(name: 'delta', type: VocabularyFieldType.number),
           VocabularyField(name: 'source', type: VocabularyFieldType.string, required: false),
+        ],
+      ),
+      DomainVocabularyDefinition(
+        type: DomainVocabulary.storyStage,
+        fields: [
+          VocabularyField(name: 'lineId', type: VocabularyFieldType.string),
+          VocabularyField(name: 'stage', type: VocabularyFieldType.number),
+        ],
+      ),
+      DomainVocabularyDefinition(
+        type: DomainVocabulary.traitAdd,
+        fields: [
+          VocabularyField(name: 'traitId', type: VocabularyFieldType.string),
+          VocabularyField(name: 'delta', type: VocabularyFieldType.number),
         ],
       ),
     ],

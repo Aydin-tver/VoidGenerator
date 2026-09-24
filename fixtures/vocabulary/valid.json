@@ -5,5 +5,7 @@
   "story.flag": {"flag":"learned_about_sigma","value":true},
   "evidence.add": {"evidenceId":"evidence_sigma_01"},
   "economy.telemetry": {"metric":"salvage_credits","amount":1250},
-  "thread.resonance": {"delta":1,"source":"anomaly_07"}
+  "thread.resonance": {"delta":1,"source":"anomaly_07"},
+  "story.stage": {"lineId":"lore_main","stage":4},
+  "trait.add": {"traitId":"autonomy","delta":8}
 }
