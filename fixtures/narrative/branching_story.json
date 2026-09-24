@@ -1,0 +1,19 @@
+{
+  "id": "demo_branching_story",
+  "version": 1,
+  "startNodeId": "briefing",
+  "tags": ["demo", "branching"],
+  "nodes": [
+    {"id":"briefing","textKey":"story.briefing","choices":[
+      {"id":"trust_contact","targetNodeId":"contact","condition":{"op":"flag","id":"knows_contact","expected":true},"consequences":["character.trust"]},
+      {"id":"investigate_alone","targetNodeId":"investigation","condition":{"op":"always"}}
+    ]},
+    {"id":"contact","textKey":"story.contact","enterConsequences":["evidence.add"],"choices":[
+      {"id":"continue","targetNodeId":"ending"}
+    ]},
+    {"id":"investigation","textKey":"story.investigation","choices":[
+      {"id":"use_evidence","targetNodeId":"ending","condition":{"op":"fact","id":"evidence.signal","expected":true},"consequences":["story.flag"]}
+    ]},
+    {"id":"ending","textKey":"story.ending","terminal":true}
+  ]
+}

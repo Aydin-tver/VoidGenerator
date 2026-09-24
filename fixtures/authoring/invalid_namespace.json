@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "contentId": "Act02.Kairos.Signal",
+  "storyId": "Act02.Kairos.Signal",
+  "namespace": "Act02/Kairos",
+  "version": 1,
+  "owner": {"agentId": "agent"},
+  "source": {"path": "stories/act_02/kairos/signal.json"},
+  "stableIds": {"nodePrefix": "Act02.", "choicePrefix": "Act02.choice."},
+  "localization": {"keys": []},
+  "dependencies": {"events": [], "consequences": [], "narratives": []},
+  "narrative": {"id": "Act02.Kairos.Signal", "version": 1, "startNodeId": "Act02.start", "nodes": []}
+}

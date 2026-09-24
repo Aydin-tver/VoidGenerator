@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "missionId": "mission.convoy.shadow",
+  "scenarios": [
+    {"id":"success","events":["flight.entered_region","convoy.detected","convoy.escort_tick","convoy.escort_tick","convoy.escort_tick","convoy.protected"],"expected":"completed"},
+    {"id":"destroyed","events":["flight.entered_region","convoy.detected","convoy.destroyed"],"expected":"failed"},
+    {"id":"wrong_region","events":["flight.entered_region","convoy.detected"],"expected":"active"},
+    {"id":"duplicate","events":["flight.entered_region","convoy.detected","convoy.escort_tick","convoy.escort_tick","convoy.escort_tick"],"expected":"active"}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "scenario": "convoy_vertical_slice",
+  "events": [
+    {"id":"evt-001","type":"flight.entered_region","version":1,"payload":{"regionId":"kairos_corridor"},"source":"flight"},
+    {"id":"evt-002","type":"convoy.detected","version":1,"payload":{"convoyId":"convoy_001","regionId":"kairos_corridor"},"source":"convoy"},
+    {"id":"evt-003","type":"convoy.escort_tick","version":1,"payload":{"convoyId":"convoy_001","integrity":98},"source":"convoy"},
+    {"id":"evt-004","type":"convoy.escort_tick","version":1,"payload":{"convoyId":"convoy_001","integrity":91},"source":"convoy"},
+    {"id":"evt-005","type":"convoy.escort_tick","version":1,"payload":{"convoyId":"convoy_001","integrity":87},"source":"convoy"},
+    {"id":"evt-006","type":"convoy.protected","version":1,"payload":{"convoyId":"convoy_001"},"source":"convoy"}
+  ]
+}

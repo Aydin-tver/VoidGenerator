@@ -1,0 +1,8 @@
+{
+  "scenario": "convoy_failure",
+  "events": [
+    {"id":"evt-f01","type":"flight.entered_region","version":1,"payload":{"regionId":"kairos_corridor"},"source":"flight"},
+    {"id":"evt-f02","type":"convoy.detected","version":1,"payload":{"convoyId":"convoy_002","regionId":"kairos_corridor"},"source":"convoy"},
+    {"id":"evt-f03","type":"convoy.destroyed","version":1,"payload":{"convoyId":"convoy_002","cause":"pirate_raid"},"source":"convoy"}
+  ]
+}

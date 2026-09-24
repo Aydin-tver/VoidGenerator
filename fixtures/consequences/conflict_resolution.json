@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "rules": [
+    {
+      "id": "world.piracy.base",
+      "event": {"op": "event", "type": "convoy.destroyed"},
+      "type": "world.consequence",
+      "payload": {"key": "piracy", "delta": 1},
+      "priority": 10,
+      "conflictKey": "world:piracy",
+      "conflictPolicy": "additive"
+    },
+    {
+      "id": "world.piracy.emergency",
+      "event": {"op": "event", "type": "convoy.destroyed", "path": "cause", "equals": "pirates"},
+      "type": "world.consequence",
+      "payload": {"key": "piracy", "delta": 2},
+      "priority": 100,
+      "conflictKey": "world:piracy:exclusive",
+      "conflictPolicy": "exclusive"
+    },
+    {
+      "id": "world.mining_once",
+      "event": {"op": "event", "type": "cargo.salvaged"},
+      "type": "world.consequence",
+      "payload": {"key": "miningPressure", "delta": 1},
+      "oncePerEntity": true,
+      "conflictKey": "world:miningPressure",
+      "conflictPolicy": "rejectDuplicate"
+    }
+  ]
+}

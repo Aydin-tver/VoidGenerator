@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "rules": [
+    {
+      "id": "world.piracy_after_convoy_destroyed",
+      "event": {"op": "event", "type": "convoy.destroyed", "path": "cause", "equals": "pirates"},
+      "type": "world.consequence",
+      "payload": {"key": "piracy", "delta": 1},
+      "oncePerEntity": true
+    },
+    {
+      "id": "world.mining_pressure_after_salvage",
+      "event": {"op": "event", "type": "cargo.salvaged", "path": "quantity", "greaterThan": 9},
+      "type": "world.consequence",
+      "payload": {"key": "miningPressure", "delta": 1},
+      "oncePerEntity": true
+    },
+    {
+      "id": "faction.tidari_after_scan",
+      "event": {"op": "event", "type": "scan.discovery_completed"},
+      "type": "faction.reputation",
+      "payload": {"factionId": "tidari", "amount": 1},
+      "oncePerEntity": true
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "effects": [
+    {
+      "type": "economy.credit",
+      "payload": {
+        "amount": "number"
+      }
+    },
+    {
+      "type": "faction.reputation",
+      "payload": {
+        "factionId": "string",
+        "amount": "number"
+      }
+    },
+    {
+      "type": "world.consequence",
+      "payload": {
+        "key": "string",
+        "delta": "number"
+      }
+    },
+    {
+      "type": "mission.start",
+      "payload": {
+        "missionId": "string"
+      }
+    },
+    {
+      "type": "mission.complete",
+      "payload": {
+        "missionId": "string"
+      }
+    }
+  ]
+}

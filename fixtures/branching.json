@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "mission.test.branching",
+  "version": 1,
+  "titleKey": "test.branching",
+  "startStepId": "start",
+  "steps": [
+    {
+      "id": "start",
+      "displayKey": "start",
+      "clueKey": "clue",
+      "event": {
+        "type": "convoy.detected",
+        "path": "convoyId",
+        "equals": "c1"
+      },
+      "nextStepId": "protect"
+    },
+    {
+      "id": "protect",
+      "displayKey": "protect",
+      "clueKey": "clue",
+      "event": {
+        "op": "any",
+        "conditions": [
+          {
+            "type": "convoy.protected",
+            "path": "convoyId",
+            "equals": "c1"
+          },
+          {
+            "type": "convoy.escort_tick",
+            "path": "convoyId",
+            "equals": "c1"
+          }
+        ]
+      },
+      "nextStepId": "finish"
+    },
+    {
+      "id": "finish",
+      "displayKey": "finish",
+      "clueKey": "clue",
+      "event": {
+        "type": "station.docked",
+        "path": "stationId",
+        "equals": "s1"
+      }
+    }
+  ],
+  "outcomes": []
+}

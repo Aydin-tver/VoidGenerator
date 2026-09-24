@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {"type":"combat.started","payload":{"encounterId":"pirate_001","enemyArchetype":"pirate_raider"}},
+    {"type":"combat.victory","payload":{"encounterId":"pirate_001","riskLevel":2}},
+    {"type":"combat.retreat","payload":{"encounterId":"pirate_002","riskLevel":1}},
+    {"type":"cargo.salvaged","payload":{"sourceId":"wreck_001","itemId":"nexite","quantity":3}},
+    {"type":"trade.completed","payload":{"stationId":"kairos","itemId":"fuel","quantity":5,"side":"buy"}},
+    {"type":"station.docked","payload":{"stationId":"kairos"}},
+    {"type":"scan.discovery_completed","payload":{"targetId":"anomaly_001","discoveryId":"thread_fragment"}}
+  ]
+}

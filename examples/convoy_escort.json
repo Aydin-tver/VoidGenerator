@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "mission.convoy.kairos_001",
+  "version": 1,
+  "titleKey": "mission.convoy.kairos_001.title",
+  "descriptionKey": "mission.convoy.kairos_001.description",
+  "tags": ["mission", "convoy", "trade", "risk"],
+  "steps": [
+    {
+      "id": "reach_corridor",
+      "displayKey": "mission.convoy.reach_corridor",
+      "locationKey": "location.kairos.outer_trade_corridor",
+      "clueKey": "clue.convoy.outer_beacon",
+      "sourceKey": "source.radio.intercept",
+      "count": 1,
+      "event": {
+        "type": "flight.entered_region",
+        "path": "regionId",
+        "equals": "kairos.outer_trade_corridor"
+      }
+    },
+    {
+      "id": "find_convoy",
+      "displayKey": "mission.convoy.find_convoy",
+      "locationKey": "location.kairos.outer_trade_corridor",
+      "clueKey": "clue.convoy.civilian_transponders",
+      "sourceKey": "source.radio.intercept",
+      "count": 1,
+      "event": {
+        "type": "convoy.detected",
+        "path": "convoyId",
+        "equals": "convoy.kairos_001"
+      }
+    },
+    {
+      "id": "escort",
+      "displayKey": "mission.convoy.escort",
+      "locationKey": "location.kairos.outer_trade_corridor",
+      "clueKey": "clue.convoy.stay_near_transports",
+      "sourceKey": "source.convoy.comms",
+      "count": 3,
+      "event": {
+        "type": "convoy.escort_tick",
+        "path": "convoyId",
+        "equals": "convoy.kairos_001"
+      }
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "success",
+      "effects": [
+        {"type": "economy.credit", "payload": {"amount": 420}},
+        {"type": "faction.reputation", "payload": {"factionId": "free_merchants", "amount": 4}},
+        {"type": "world.consequence", "payload": {"key": "piracy", "delta": -1}}
+      ]
+    }
+  ]
+}

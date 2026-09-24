@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "definitions": [
+    {"type":"world.consequence","strict":true,"payload":{"key":{"type":"string","required":true},"delta":{"type":"number","required":true}}},
+    {"type":"faction.reputation","strict":true,"payload":{"factionId":{"type":"string","required":true},"delta":{"type":"number","required":true}}},
+    {"type":"character.trust","strict":true,"payload":{"characterId":{"type":"string","required":true},"delta":{"type":"number","required":true}}},
+    {"type":"story.flag","strict":true,"payload":{"flag":{"type":"string","required":true},"value":{"type":"boolean","required":true}}},
+    {"type":"evidence.add","strict":true,"payload":{"evidenceId":{"type":"string","required":true}}},
+    {"type":"economy.telemetry","strict":true,"payload":{"metric":{"type":"string","required":true},"amount":{"type":"number","required":true}}},
+    {"type":"thread.resonance","strict":true,"payload":{"delta":{"type":"number","required":true},"source":{"type":"string","required":false}}}
+  ]
+}

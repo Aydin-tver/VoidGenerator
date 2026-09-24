@@ -1,0 +1,9 @@
+{
+  "world.consequence": {"key":"piracy","delta":1},
+  "faction.reputation": {"factionId":"tidari","delta":5},
+  "character.trust": {"characterId":"captain_sera","delta":2},
+  "story.flag": {"flag":"learned_about_sigma","value":true},
+  "evidence.add": {"evidenceId":"evidence_sigma_01"},
+  "economy.telemetry": {"metric":"salvage_credits","amount":1250},
+  "thread.resonance": {"delta":1,"source":"anomaly_07"}
+}

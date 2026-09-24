@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"void-event-engine/events.catalog.schema.json",
+  "type":"object",
+  "required":["schemaVersion","events"],
+  "properties":{
+    "schemaVersion":{"type":"integer","minimum":1},
+    "events":{
+      "type":"array",
+      "items":{
+        "type":"object",
+        "required":["type","version","payload","producer"],
+        "properties":{
+          "type":{"type":"string","pattern":"^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$"},
+          "version":{"type":"integer","minimum":1},
+          "producer":{"type":"string"},
+          "payload":{"type":"object","additionalProperties":{"type":"string"}},
+          "deprecated":{"type":"boolean"}
+        },
+        "additionalProperties":false
+      }
+    }
+  },
+  "additionalProperties":false
+}

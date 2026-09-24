@@ -1,0 +1,11 @@
+{
+  "id": "invalid_story",
+  "version": 1,
+  "startNodeId": "start",
+  "nodes": [
+    {"id":"start","choices":[
+      {"id":"bad","targetNodeId":"missing","condition":{"op":"value","id":"x","greaterThan":5,"lessThan":5}}
+    ]},
+    {"id":"orphan","terminal":true}
+  ]
+}

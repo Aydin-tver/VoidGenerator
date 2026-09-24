@@ -1,0 +1,19 @@
+{
+  "id": "convoy.wanderers.shadow.0_7",
+  "missionId": "convoy.escort.kairos",
+  "description": "First real-game vertical slice: legacy mission remains authoritative while the event engine observes the same semantic events.",
+  "events": [
+    {"type":"flight.entered_region","payload":{"regionId":"kairos_corridor"}},
+    {"type":"convoy.detected","payload":{"convoyId":"convoy_kairos_001","regionId":"kairos_corridor"}},
+    {"type":"convoy.escort_tick","payload":{"convoyId":"convoy_kairos_001","integrity":100}},
+    {"type":"convoy.escort_tick","payload":{"convoyId":"convoy_kairos_001","integrity":85}},
+    {"type":"convoy.escort_tick","payload":{"convoyId":"convoy_kairos_001","integrity":70}},
+    {"type":"convoy.protected","payload":{"convoyId":"convoy_kairos_001"}}
+  ],
+  "assertions": {
+    "authoritativeSystem": "legacy",
+    "newEngineMayReward": false,
+    "expectedTerminalState": "completed",
+    "duplicateEventMustNotIncreaseProgress": true
+  }
+}

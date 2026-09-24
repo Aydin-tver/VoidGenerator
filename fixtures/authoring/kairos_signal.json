@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "contentId": "act02.kairos.signal",
+  "storyId": "act02.kairos.signal",
+  "namespace": "act02.kairos",
+  "version": 1,
+  "owner": {"agentId": "narrative-agent-kairos"},
+  "source": {"path": "stories/act_02/kairos/signal.json"},
+  "stableIds": {
+    "nodePrefix": "act02.kairos.signal.node.",
+    "choicePrefix": "act02.kairos.signal.choice."
+  },
+  "localization": {
+    "keys": [
+      "story.act02.kairos.signal.start",
+      "story.act02.kairos.signal.investigate",
+      "story.act02.kairos.signal.leave"
+    ]
+  },
+  "dependencies": {
+    "events": ["scan.discovery_completed"],
+    "consequences": ["evidence.add", "story.flag"],
+    "narratives": []
+  },
+  "narrative": {
+    "id": "act02.kairos.signal",
+    "version": 1,
+    "startNodeId": "act02.kairos.signal.node.start",
+    "nodes": [
+      {
+        "id": "act02.kairos.signal.node.start",
+        "textKey": "story.act02.kairos.signal.start",
+        "enterEventType": "scan.discovery_completed",
+        "choices": [
+          {
+            "id": "act02.kairos.signal.choice.investigate",
+            "targetNodeId": "act02.kairos.signal.node.investigate",
+            "consequences": ["evidence.add"]
+          },
+          {
+            "id": "act02.kairos.signal.choice.leave",
+            "targetNodeId": "act02.kairos.signal.node.leave",
+            "consequences": ["story.flag"]
+          }
+        ]
+      },
+      {
+        "id": "act02.kairos.signal.node.investigate",
+        "textKey": "story.act02.kairos.signal.investigate",
+        "terminal": true
+      },
+      {
+        "id": "act02.kairos.signal.node.leave",
+        "textKey": "story.act02.kairos.signal.leave",
+        "terminal": true
+      }
+    ]
+  }
+}

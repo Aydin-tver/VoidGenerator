@@ -1,0 +1,13 @@
+{
+  "description": "Persistent journal replay contract",
+  "snapshot": {
+    "missionId": "convoy_kairos_001",
+    "lastSequence": 2
+  },
+  "events": [
+    {"id":"e3","type":"convoy.escort_tick","version":1,"sequence":3,"payload":{"convoyId":"convoy_kairos_001","integrity":85}},
+    {"id":"e4","type":"convoy.escort_tick","version":1,"sequence":4,"payload":{"convoyId":"convoy_kairos_001","integrity":70}},
+    {"id":"e5","type":"convoy.protected","version":1,"sequence":5,"payload":{"convoyId":"convoy_kairos_001"}}
+  ],
+  "expected": {"replayStartsAfterSequence":2,"lastSequence":5}
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "events": [
+    {"type":"flight.entered_region","version":1,"payload":{"regionId":"string"},"producer":"flight"},
+    {"type":"station.docked","version":1,"payload":{"stationId":"string"},"producer":"station"},
+    {"type":"combat.started","version":1,"payload":{"encounterId":"string","enemyArchetype":"string"},"producer":"combat"},
+    {"type":"combat.victory","version":1,"payload":{"encounterId":"string","riskLevel":"number"},"producer":"combat"},
+    {"type":"combat.retreat","version":1,"payload":{"encounterId":"string","riskLevel":"number"},"producer":"combat"},
+    {"type":"cargo.salvaged","version":1,"payload":{"sourceId":"string","itemId":"string|null","quantity":"number"},"producer":"salvage"},
+    {"type":"trade.completed","version":1,"payload":{"stationId":"string","itemId":"string","quantity":"number","side":"buy|sell"},"producer":"trade"},
+    {"type":"convoy.detected","version":1,"payload":{"convoyId":"string","regionId":"string"},"producer":"convoy"},
+    {"type":"convoy.escort_tick","version":1,"payload":{"convoyId":"string","integrity":"number"},"producer":"convoy"},
+    {"type":"convoy.protected","version":1,"payload":{"convoyId":"string"},"producer":"convoy"},
+    {"type":"convoy.destroyed","version":1,"payload":{"convoyId":"string","cause":"string"},"producer":"convoy"},
+    {"type":"scan.discovery_completed","version":1,"payload":{"targetId":"string","discoveryId":"string"},"producer":"scan"},
+    {"type":"thread.resonance_detected","version":1,"payload":{"strength":"number","locationId":"string"},"producer":"thread"},
+    {"type":"faction.reputation_changed","version":1,"payload":{"factionId":"string","delta":"number"},"producer":"faction"},
+    {"type":"world.consequence_changed","version":1,"payload":{"key":"string","delta":"number"},"producer":"world"}
+  ],
+  "effects": [
+    {"type":"economy.credit","payload":{"amount":"number"}},
+    {"type":"faction.reputation","payload":{"factionId":"string","amount":"number"}},
+    {"type":"world.consequence","payload":{"key":"string","delta":"number"}},
+    {"type":"mission.start","payload":{"missionId":"string"}},
+    {"type":"mission.complete","payload":{"missionId":"string"}}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "scenarios": [
+    {"id":"combat_victory","producer":"combat","terminalEvent":"combat.victory"},
+    {"id":"combat_retreat","producer":"combat","terminalEvent":"combat.retreat"},
+    {"id":"salvage","producer":"salvage","terminalEvent":"cargo.salvaged"},
+    {"id":"trade","producer":"trade","terminalEvent":"trade.completed"},
+    {"id":"station","producer":"station","terminalEvent":"station.docked"},
+    {"id":"scan","producer":"scan","terminalEvent":"scan.discovery_completed"},
+    {"id":"convoy_success","producer":"convoy","terminalEvent":"convoy.protected"},
+    {"id":"convoy_failure","producer":"convoy","terminalEvent":"convoy.destroyed"}
+  ]
+}
