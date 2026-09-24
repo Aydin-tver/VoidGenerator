@@ -1,5 +1,6 @@
 import '../event.dart';
 import '../event_bus.dart';
+import '../condition.dart';
 import 'consequence.dart';
 
 class ConsequenceRuntime {
@@ -14,7 +15,7 @@ class ConsequenceRuntime {
 
   void attach() {
     if (_attached) return;
-    for (final type in rules.map((r) => r.eventCondition.eventType).toSet()) {
+    for (final type in rules.map((r) => conditionEventTypes(r.eventCondition)).expand((t) => t).toSet()) {
       bus.subscribe(type, _onEvent);
     }
     _attached = true;
@@ -22,7 +23,7 @@ class ConsequenceRuntime {
 
   void detach() {
     if (!_attached) return;
-    for (final type in rules.map((r) => r.eventCondition.eventType).toSet()) {
+    for (final type in rules.map((r) => conditionEventTypes(r.eventCondition)).expand((t) => t).toSet()) {
       bus.unsubscribe(type, _onEvent);
     }
     _attached = false;

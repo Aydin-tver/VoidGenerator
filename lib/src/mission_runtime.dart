@@ -1,5 +1,6 @@
 import 'event.dart';
 import 'event_bus.dart';
+import 'condition.dart';
 import 'mission_definition.dart';
 
 class MissionSnapshot {
@@ -69,7 +70,7 @@ class MissionRuntime {
       ..clear()
       ..addAll(startStepIds());
     stepStartedAt..clear();
-    for (final id in activeStepIds) stepStartedAt[id] = startedAt;
+    for (final id in activeStepIds) stepStartedAt[id] = startedAt!;
     consumedEventIds.clear(); currentOutcomeId = null; lastSequence = null;
   }
 
@@ -83,11 +84,11 @@ class MissionRuntime {
   void dispose() {}
 
   void attach() {
-    final types = definition.steps.map((s) => s.eventCondition.eventType).toSet();
+    final types = definition.steps.map((s) => conditionEventTypes(s.eventCondition)).expand((t) => t).toSet();
     for (final type in types) bus.subscribe(type, _onEvent);
   }
   void detach() {
-    final types = definition.steps.map((s) => s.eventCondition.eventType).toSet();
+    final types = definition.steps.map((s) => conditionEventTypes(s.eventCondition)).expand((t) => t).toSet();
     for (final type in types) bus.unsubscribe(type, _onEvent);
   }
 

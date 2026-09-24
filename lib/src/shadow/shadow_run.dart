@@ -3,6 +3,7 @@ import '../event.dart';
 import '../event_bus.dart';
 import '../mission_definition.dart';
 import '../mission_runtime.dart';
+import 'shadow_trace.dart';
 
 class ShadowMissionSnapshot {
   const ShadowMissionSnapshot({

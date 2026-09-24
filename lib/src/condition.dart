@@ -62,3 +62,24 @@ class NotCondition implements Condition {
   final Condition child;
   @override bool matches(GameEvent event, EvaluationContext context) => !child.matches(event, context);
 }
+
+/// Collects statically known event types for bus subscription.
+/// Composites contribute their children; NotCondition contributes nothing.
+Set<String> conditionEventTypes(Condition condition) {
+  final types = <String>{};
+  _collectEventTypes(condition, types);
+  return types;
+}
+
+void _collectEventTypes(Condition condition, Set<String> types) {
+  if (condition is EventCondition) {
+    types.add(condition.eventType);
+  } else if (condition is AllCondition || condition is AnyCondition) {
+    final children = condition is AllCondition
+        ? condition.children
+        : (condition as AnyCondition).children;
+    for (final child in children) {
+      _collectEventTypes(child, types);
+    }
+  }
+}

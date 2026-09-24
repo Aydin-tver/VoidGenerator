@@ -6,7 +6,7 @@ Standalone, host-neutral Dart package (`void_event_engine`) providing the event/
 
 - `dart` is **not on PATH** in PowerShell on this machine; use `C:\flutter\bin\dart.bat` (Dart 3.13.4) or open a shell where it resolves.
 - Run `dart pub get` first (only dev dependency: `test`).
-- Run `dart analyze` before trusting `dart test`. As of the last check the tree does **not** compile: `dart test` fails to load every test because of analyzer errors in `lib/` (see Known issues).
+- Run `dart analyze` before trusting `dart test` (an analyzer error fails every test at load time, not just the affected suite).
 - Single test file: `dart test test/narrative_authoring_test.dart`.
 - Validation CLIs (all exit 1 on errors, 64 on bad usage):
   - `dart run bin/validate_missions.dart [dir=examples] [events.catalog.json]`
@@ -15,10 +15,8 @@ Standalone, host-neutral Dart package (`void_event_engine`) providing the event/
 
 ## Known issues at time of writing (verify with `dart analyze`, they may be fixed)
 
-- `lib/src/journal/retention.dart:1` imports `event.dart`, which does not exist.
-- `ShadowMissionSnapshot` is exported from both `src/adapter/shadow_run.dart` and `src/shadow/shadow_run.dart` → ambiguous export in the barrel file.
-- `pubspec.yaml` SDK constraint is `>=3.3.0` but `lib/src/session/session_snapshot.dart` uses the Dart 3.12 `private-named-parameters` feature → bump the constraint.
-- Git: no commits yet and no `.gitignore`; never commit `.dart_tool/`.
+- `pubspec.yaml` SDK constraint is `>=3.3.0` but `lib/src/session/session_snapshot.dart` was previously written against newer SDKs — keep an eye on the constraint when touching that file.
+- Git: the repo was synced from the vendored copy in Wanderers (`C:\dev\Wanderers\packages\void_event_engine`); that copy is the integration source of truth for engine API changes (see `docs/WANDERERS_INTEGRATION_SPEC_0_18.md`, "Integration branch policy").
 
 ## Structure
 

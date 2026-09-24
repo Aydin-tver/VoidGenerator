@@ -1,3 +1,5 @@
+import 'domain_vocabulary.dart';
+
 class DomainVocabularyLoader {
   const DomainVocabularyLoader();
 

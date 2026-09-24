@@ -1,4 +1,4 @@
-import 'event.dart';
+import '../event.dart';
 import 'event_journal.dart';
 
 abstract interface class JournalRetentionPolicy {

@@ -8,7 +8,7 @@ class MissionValidator {
   final EventCatalog? catalog;
   List<ValidationIssue> validate(MissionDefinition m) {
     final issues=<ValidationIssue>[]; final ids=<String>{}; final stepMap={for(final s in m.steps)s.id:s}; final outcomeIds=<String>{for(final o in m.outcomes)o.id};
-    if(!RegExp(r'^mission\\.[a-z0-9_.-]+$').hasMatch(m.id)) issues.add(const ValidationIssue('id','must match mission.<lowercase-id>'));
+    if(!RegExp(r'^mission\.[a-z0-9_.-]+$').hasMatch(m.id)) issues.add(const ValidationIssue('id','must match mission.<lowercase-id>'));
     if(m.version<1) issues.add(const ValidationIssue('version','must be >= 1'));
     if(m.steps.isEmpty) issues.add(const ValidationIssue('steps','must contain at least one step'));
     if(m.startStepId!=null && !stepMap.containsKey(m.startStepId)) issues.add(ValidationIssue('startStepId','unknown step ${m.startStepId}'));

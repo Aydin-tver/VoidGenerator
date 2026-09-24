@@ -59,7 +59,9 @@ abstract interface class SessionSnapshotComponent {
 /// Wanderers-specific classes while allowing concrete integrations to expose
 /// their native snapshots.
 class CallbackSnapshotComponent implements SessionSnapshotComponent {
-  CallbackSnapshotComponent({required this.id, this.schemaVersion = 1, required this._capture, required this._restore});
+  CallbackSnapshotComponent({required this.id, this.schemaVersion = 1, required Map<String, Object?> Function() capture, required void Function(Map<String, Object?> snapshot) restore})
+      : _capture = capture,
+        _restore = restore;
 
   @override
   final String id;

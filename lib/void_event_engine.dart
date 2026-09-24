@@ -12,7 +12,7 @@ export 'src/replay.dart';
 export 'src/validation.dart';
 export 'src/adapter/wanderers_event_adapter.dart';
 export 'src/adapter/legacy_mission_bridge.dart';
-export 'src/adapter/shadow_run.dart';
+export 'src/adapter/shadow_run.dart' hide ShadowMissionSnapshot, ShadowComparison, ShadowRunComparator;
 export 'src/adapter/adapter_validator.dart';
 export 'src/adapter/wanderers_event_gateway.dart';
 export 'src/contracts/event_contract_validator.dart';
