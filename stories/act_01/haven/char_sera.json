@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "contentId": "act01.haven.char_sera",
+  "storyId": "act01.haven.char_sera",
+  "namespace": "act01.haven",
+  "version": 1,
+  "owner": {"agentId": "narrative-agent-sidelines"},
+  "source": {"path": "stories/act_01/haven/char_sera.json"},
+  "stableIds": {
+    "nodePrefix": "act01.haven.char_sera.node.",
+    "choicePrefix": "act01.haven.char_sera.choice."
+  },
+  "localization": {
+    "keys": [
+      "story.act01.haven.char_sera.start",
+      "story.act01.haven.char_sera.stage_done"
+    ]
+  },
+  "dependencies": {
+    "events": ["flight.entered_region"],
+    "consequences": ["story.flag", "evidence.add", "trait.add"],
+    "narratives": []
+  },
+  "narrative": {
+    "id": "act01.haven.char_sera",
+    "version": 1,
+    "startNodeId": "act01.haven.char_sera.node.start",
+    "nodes": [
+      {
+        "id": "act01.haven.char_sera.node.start",
+        "textKey": "story.act01.haven.char_sera.start",
+        "enterEventType": "flight.entered_region",
+        "choices": [
+          {
+            "id": "act01.haven.char_sera.choice.conceal_identity",
+            "targetNodeId": "act01.haven.char_sera.node.stage_done",
+            "consequences": ["story.flag", "evidence.add", "trait.add"]
+          },
+          {
+            "id": "act01.haven.char_sera.choice.expose_identity",
+            "targetNodeId": "act01.haven.char_sera.node.stage_done",
+            "consequences": ["trait.add"]
+          }
+        ]
+      },
+      {
+        "id": "act01.haven.char_sera.node.stage_done",
+        "textKey": "story.act01.haven.char_sera.stage_done",
+        "terminal": true
+      }
+    ]
+  }
+}

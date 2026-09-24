@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "contentId": "act01.nova.sigma_02",
+  "storyId": "act01.nova.sigma_02",
+  "namespace": "act01.nova",
+  "version": 1,
+  "owner": {"agentId": "narrative-agent-sidelines"},
+  "source": {"path": "stories/act_01/nova/sigma_02.json"},
+  "stableIds": {
+    "nodePrefix": "act01.nova.sigma_02.node.",
+    "choicePrefix": "act01.nova.sigma_02.choice."
+  },
+  "localization": {
+    "keys": [
+      "story.act01.nova.sigma_02.start",
+      "story.act01.nova.sigma_02.stage_done"
+    ]
+  },
+  "dependencies": {
+    "events": ["flight.entered_region"],
+    "consequences": ["story.stage", "trait.add"],
+    "narratives": []
+  },
+  "narrative": {
+    "id": "act01.nova.sigma_02",
+    "version": 1,
+    "startNodeId": "act01.nova.sigma_02.node.start",
+    "nodes": [
+      {
+        "id": "act01.nova.sigma_02.node.start",
+        "textKey": "story.act01.nova.sigma_02.start",
+        "enterEventType": "flight.entered_region",
+        "choices": [
+          {
+            "id": "act01.nova.sigma_02.choice.probe_protocol",
+            "targetNodeId": "act01.nova.sigma_02.node.stage_done",
+            "consequences": ["trait.add"]
+          },
+          {
+            "id": "act01.nova.sigma_02.choice.keep_distance",
+            "targetNodeId": "act01.nova.sigma_02.node.stage_done",
+            "consequences": []
+          }
+        ]
+      },
+      {
+        "id": "act01.nova.sigma_02.node.stage_done",
+        "textKey": "story.act01.nova.sigma_02.stage_done",
+        "enterConsequences": ["story.stage"],
+        "terminal": true
+      }
+    ]
+  }
+}

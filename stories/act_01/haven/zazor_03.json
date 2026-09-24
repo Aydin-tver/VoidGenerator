@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "contentId": "act01.haven.zazor_03",
+  "storyId": "act01.haven.zazor_03",
+  "namespace": "act01.haven",
+  "version": 1,
+  "owner": {"agentId": "narrative-agent-sidelines"},
+  "source": {"path": "stories/act_01/haven/zazor_03.json"},
+  "stableIds": {
+    "nodePrefix": "act01.haven.zazor_03.node.",
+    "choicePrefix": "act01.haven.zazor_03.choice."
+  },
+  "localization": {
+    "keys": [
+      "story.act01.haven.zazor_03.start",
+      "story.act01.haven.zazor_03.stage_done"
+    ]
+  },
+  "dependencies": {
+    "events": ["flight.entered_region"],
+    "consequences": ["story.stage", "trait.add", "character.trust"],
+    "narratives": []
+  },
+  "narrative": {
+    "id": "act01.haven.zazor_03",
+    "version": 1,
+    "startNodeId": "act01.haven.zazor_03.node.start",
+    "nodes": [
+      {
+        "id": "act01.haven.zazor_03.node.start",
+        "textKey": "story.act01.haven.zazor_03.start",
+        "enterEventType": "flight.entered_region",
+        "choices": [
+          {
+            "id": "act01.haven.zazor_03.choice.vouch_for_contact",
+            "targetNodeId": "act01.haven.zazor_03.node.stage_done",
+            "consequences": ["character.trust", "trait.add"]
+          },
+          {
+            "id": "act01.haven.zazor_03.choice.stay_anonymous",
+            "targetNodeId": "act01.haven.zazor_03.node.stage_done",
+            "consequences": ["trait.add"]
+          }
+        ]
+      },
+      {
+        "id": "act01.haven.zazor_03.node.stage_done",
+        "textKey": "story.act01.haven.zazor_03.stage_done",
+        "enterConsequences": ["story.stage"],
+        "terminal": true
+      }
+    ]
+  }
+}

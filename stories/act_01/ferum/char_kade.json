@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "contentId": "act01.ferum.char_kade",
+  "storyId": "act01.ferum.char_kade",
+  "namespace": "act01.ferum",
+  "version": 1,
+  "owner": {"agentId": "narrative-agent-sidelines"},
+  "source": {"path": "stories/act_01/ferum/char_kade.json"},
+  "stableIds": {
+    "nodePrefix": "act01.ferum.char_kade.node.",
+    "choicePrefix": "act01.ferum.char_kade.choice."
+  },
+  "localization": {
+    "keys": [
+      "story.act01.ferum.char_kade.start",
+      "story.act01.ferum.char_kade.stage_done"
+    ]
+  },
+  "dependencies": {
+    "events": ["flight.entered_region"],
+    "consequences": ["evidence.add"],
+    "narratives": []
+  },
+  "narrative": {
+    "id": "act01.ferum.char_kade",
+    "version": 1,
+    "startNodeId": "act01.ferum.char_kade.node.start",
+    "nodes": [
+      {
+        "id": "act01.ferum.char_kade.node.start",
+        "textKey": "story.act01.ferum.char_kade.start",
+        "enterEventType": "flight.entered_region",
+        "choices": [
+          {
+            "id": "act01.ferum.char_kade.choice.listen_witness",
+            "targetNodeId": "act01.ferum.char_kade.node.stage_done",
+            "consequences": ["evidence.add"]
+          },
+          {
+            "id": "act01.ferum.char_kade.choice.move_on",
+            "targetNodeId": "act01.ferum.char_kade.node.stage_done",
+            "consequences": []
+          }
+        ]
+      },
+      {
+        "id": "act01.ferum.char_kade.node.stage_done",
+        "textKey": "story.act01.ferum.char_kade.stage_done",
+        "terminal": true
+      }
+    ]
+  }
+}
