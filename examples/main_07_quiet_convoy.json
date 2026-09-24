@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "mission.main_07.quiet_convoy",
+  "version": 1,
+  "titleKey": "mission.main_07.quiet_convoy.title",
+  "descriptionKey": "mission.main_07.quiet_convoy.description",
+  "tags": ["mission", "smuggler", "risk"],
+  "steps": [
+    {
+      "id": "cross_patrol_route",
+      "displayKey": "mission.main_07.quiet_convoy.cross_patrol_route",
+      "locationKey": "location.haven.frontier_route",
+      "clueKey": "clue.main_07.patrol_schedule",
+      "sourceKey": "source.omnicorp.contract",
+      "count": 1,
+      "event": {
+        "type": "flight.entered_region",
+        "path": "regionId",
+        "equals": "region.haven.frontier_route"
+      }
+    },
+    {
+      "id": "escape_intercept",
+      "displayKey": "mission.main_07.quiet_convoy.escape_intercept",
+      "locationKey": "location.haven.frontier_route",
+      "clueKey": "clue.main_07.retreat_vector",
+      "sourceKey": "source.omnicorp.contract",
+      "count": 1,
+      "event": {
+        "type": "combat.retreat",
+        "path": "encounterId",
+        "equals": "encounter.patrol_intercept_07"
+      }
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "success",
+      "effects": [
+        {"type": "economy.credit", "payload": {"amount": 520}},
+        {"type": "faction.reputation", "payload": {"factionId": "omnicorp", "amount": 5}}
+      ]
+    }
+  ]
+}

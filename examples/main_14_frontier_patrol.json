@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "mission.main_14.frontier_patrol",
+  "version": 1,
+  "titleKey": "mission.main_14.frontier_patrol.title",
+  "descriptionKey": "mission.main_14.frontier_patrol.description",
+  "tags": ["mission", "combat", "frontier"],
+  "steps": [
+    {
+      "id": "clear_raider_pair",
+      "displayKey": "mission.main_14.frontier_patrol.clear_raider_pair",
+      "locationKey": "location.fort_tavra.approach",
+      "clueKey": "clue.main_14.raider_convoy_signature",
+      "sourceKey": "source.omnicorp.contract",
+      "count": 2,
+      "event": {
+        "type": "combat.victory",
+        "path": "enemyArchetype",
+        "equals": "pirate_raider"
+      }
+    },
+    {
+      "id": "report_fort_tavra",
+      "displayKey": "mission.main_14.frontier_patrol.report_fort_tavra",
+      "locationKey": "location.fort_tavra",
+      "clueKey": "clue.main_14.patrol_desk",
+      "sourceKey": "source.omnicorp.contract",
+      "count": 1,
+      "event": {
+        "type": "station.docked",
+        "path": "stationId",
+        "equals": "station_fort_tavra"
+      }
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "success",
+      "effects": [
+        {"type": "economy.credit", "payload": {"amount": 720}},
+        {"type": "faction.reputation", "payload": {"factionId": "omnicorp", "amount": 5}}
+      ]
+    }
+  ]
+}

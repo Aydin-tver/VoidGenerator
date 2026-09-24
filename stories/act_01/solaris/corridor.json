@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "contentId": "act01.solaris.corridor",
+  "storyId": "act01.solaris.corridor",
+  "namespace": "act01.solaris",
+  "version": 1,
+  "owner": {"agentId": "narrative-agent-mainline"},
+  "source": {"path": "stories/act_01/solaris/corridor.json"},
+  "stableIds": {
+    "nodePrefix": "act01.solaris.corridor.node.",
+    "choicePrefix": "act01.solaris.corridor.choice."
+  },
+  "localization": {
+    "keys": [
+      "story.act01.solaris.corridor.start",
+      "story.act01.solaris.corridor.finale",
+      "story.act01.solaris.corridor.stage_done"
+    ]
+  },
+  "dependencies": {
+    "events": ["flight.entered_region"],
+    "consequences": ["story.stage", "trait.add", "thread.resonance", "character.trust", "story.flag"],
+    "narratives": []
+  },
+  "narrative": {
+    "id": "act01.solaris.corridor",
+    "version": 1,
+    "startNodeId": "act01.solaris.corridor.node.start",
+    "nodes": [
+      {
+        "id": "act01.solaris.corridor.node.start",
+        "textKey": "story.act01.solaris.corridor.start",
+        "enterEventType": "flight.entered_region",
+        "choices": [
+          {
+            "id": "act01.solaris.corridor.choice.trust_self",
+            "targetNodeId": "act01.solaris.corridor.node.finale",
+            "consequences": ["trait.add", "thread.resonance"]
+          },
+          {
+            "id": "act01.solaris.corridor.choice.trust_registry",
+            "targetNodeId": "act01.solaris.corridor.node.finale",
+            "consequences": ["character.trust"]
+          }
+        ]
+      },
+      {
+        "id": "act01.solaris.corridor.node.finale",
+        "textKey": "story.act01.solaris.corridor.finale",
+        "choices": [
+          {
+            "id": "act01.solaris.corridor.choice.save_coordinates",
+            "targetNodeId": "act01.solaris.corridor.node.stage_done",
+            "consequences": ["story.flag"]
+          },
+          {
+            "id": "act01.solaris.corridor.choice.ignore",
+            "targetNodeId": "act01.solaris.corridor.node.stage_done",
+            "consequences": []
+          }
+        ]
+      },
+      {
+        "id": "act01.solaris.corridor.node.stage_done",
+        "textKey": "story.act01.solaris.corridor.stage_done",
+        "enterConsequences": ["story.stage"],
+        "terminal": true
+      }
+    ]
+  }
+}

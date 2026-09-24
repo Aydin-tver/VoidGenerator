@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "contentId": "act01.ferum.mine",
+  "storyId": "act01.ferum.mine",
+  "namespace": "act01.ferum",
+  "version": 1,
+  "owner": {"agentId": "narrative-agent-mainline"},
+  "source": {"path": "stories/act_01/ferum/mine.json"},
+  "stableIds": {
+    "nodePrefix": "act01.ferum.mine.node.",
+    "choicePrefix": "act01.ferum.mine.choice."
+  },
+  "localization": {
+    "keys": [
+      "story.act01.ferum.mine.start",
+      "story.act01.ferum.mine.after",
+      "story.act01.ferum.mine.stage_done"
+    ]
+  },
+  "dependencies": {
+    "events": ["flight.entered_region"],
+    "consequences": ["story.stage", "evidence.add", "faction.reputation", "character.trust", "thread.resonance"],
+    "narratives": []
+  },
+  "narrative": {
+    "id": "act01.ferum.mine",
+    "version": 1,
+    "startNodeId": "act01.ferum.mine.node.start",
+    "nodes": [
+      {
+        "id": "act01.ferum.mine.node.start",
+        "textKey": "story.act01.ferum.mine.start",
+        "enterEventType": "flight.entered_region",
+        "choices": [
+          {
+            "id": "act01.ferum.mine.choice.evacuate_miners",
+            "targetNodeId": "act01.ferum.mine.node.after",
+            "consequences": ["evidence.add", "faction.reputation", "character.trust", "thread.resonance"]
+          },
+          {
+            "id": "act01.ferum.mine.choice.save_ore",
+            "targetNodeId": "act01.ferum.mine.node.after",
+            "consequences": ["evidence.add", "faction.reputation"]
+          }
+        ]
+      },
+      {
+        "id": "act01.ferum.mine.node.after",
+        "textKey": "story.act01.ferum.mine.after",
+        "choices": [
+          {
+            "id": "act01.ferum.mine.choice.publish",
+            "targetNodeId": "act01.ferum.mine.node.stage_done",
+            "consequences": ["character.trust"]
+          },
+          {
+            "id": "act01.ferum.mine.choice.conceal",
+            "targetNodeId": "act01.ferum.mine.node.stage_done",
+            "consequences": []
+          }
+        ]
+      },
+      {
+        "id": "act01.ferum.mine.node.stage_done",
+        "textKey": "story.act01.ferum.mine.stage_done",
+        "enterConsequences": ["story.stage"],
+        "terminal": true
+      }
+    ]
+  }
+}

@@ -22,7 +22,7 @@ Standalone, host-neutral Dart package (`void_event_engine`) providing the event/
 
 - Barrel file: `lib/void_event_engine.dart` exports everything. Any new `lib/src/` module must be added to it.
 - Two similarly named shadow-run modules — check which you mean before editing: `lib/src/adapter/shadow_run.dart` (host-adapter side) vs `lib/src/shadow/shadow_run.dart` (core engine).
-- Content contracts live at repo root: `events.catalog.json`, `effects.catalog.json`, `vocabulary.catalog.json`; JSON Schemas in `schema/`; deterministic test samples in `fixtures/`; authored missions in `examples/`.
+- Content contracts live at repo root: `events.catalog.json`, `effects.catalog.json`, `vocabulary.catalog.json`; JSON Schemas in `schema/`; deterministic test samples in `fixtures/`; authored missions in `examples/`; authored narrative units (authoring envelopes) in `stories/` — `bin/validate_narratives.dart` expects the inner `narrative` object, not the envelope.
 - `docs/` contains per-version design docs; `ARCHITECTURE.md` and `AI_WORKFLOW.md` are the binding rulebooks. Latest design state: `docs/NARRATIVE_AUTHORING_0_17.md`, `docs/WANDERERS_INTEGRATION_SPEC_0_18.md`.
 
 ## Binding content rules (from `docs/AI_WORKFLOW.md` — enforced by validators)

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "contentId": "act01.nova.karmacore",
+  "storyId": "act01.nova.karmacore",
+  "namespace": "act01.nova",
+  "version": 1,
+  "owner": {"agentId": "narrative-agent-mainline"},
+  "source": {"path": "stories/act_01/nova/karmacore.json"},
+  "stableIds": {
+    "nodePrefix": "act01.nova.karmacore.node.",
+    "choicePrefix": "act01.nova.karmacore.choice."
+  },
+  "localization": {
+    "keys": [
+      "story.act01.nova.karmacore.start",
+      "story.act01.nova.karmacore.reply",
+      "story.act01.nova.karmacore.stage_done"
+    ]
+  },
+  "dependencies": {
+    "events": ["flight.entered_region"],
+    "consequences": ["story.stage", "evidence.add", "trait.add"],
+    "narratives": []
+  },
+  "narrative": {
+    "id": "act01.nova.karmacore",
+    "version": 1,
+    "startNodeId": "act01.nova.karmacore.node.start",
+    "nodes": [
+      {
+        "id": "act01.nova.karmacore.node.start",
+        "textKey": "story.act01.nova.karmacore.start",
+        "enterEventType": "flight.entered_region",
+        "choices": [
+          {
+            "id": "act01.nova.karmacore.choice.check_exception",
+            "targetNodeId": "act01.nova.karmacore.node.reply",
+            "consequences": []
+          },
+          {
+            "id": "act01.nova.karmacore.choice.follow_protocol",
+            "targetNodeId": "act01.nova.karmacore.node.reply",
+            "consequences": []
+          }
+        ]
+      },
+      {
+        "id": "act01.nova.karmacore.node.reply",
+        "textKey": "story.act01.nova.karmacore.reply",
+        "enterConsequences": ["evidence.add"],
+        "choices": [
+          {
+            "id": "act01.nova.karmacore.choice.honest_answer",
+            "targetNodeId": "act01.nova.karmacore.node.stage_done",
+            "consequences": ["evidence.add", "trait.add"]
+          },
+          {
+            "id": "act01.nova.karmacore.choice.no_answer",
+            "targetNodeId": "act01.nova.karmacore.node.stage_done",
+            "consequences": ["trait.add"]
+          }
+        ]
+      },
+      {
+        "id": "act01.nova.karmacore.node.stage_done",
+        "textKey": "story.act01.nova.karmacore.stage_done",
+        "enterConsequences": ["story.stage"],
+        "terminal": true
+      }
+    ]
+  }
+}

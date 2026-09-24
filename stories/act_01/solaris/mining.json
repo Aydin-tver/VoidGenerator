@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": 1,
+  "contentId": "act01.solaris.mining",
+  "storyId": "act01.solaris.mining",
+  "namespace": "act01.solaris",
+  "version": 1,
+  "owner": {"agentId": "narrative-agent-mainline"},
+  "source": {"path": "stories/act_01/solaris/mining.json"},
+  "stableIds": {
+    "nodePrefix": "act01.solaris.mining.node.",
+    "choicePrefix": "act01.solaris.mining.choice."
+  },
+  "localization": {
+    "keys": [
+      "story.act01.solaris.mining.start",
+      "story.act01.solaris.mining.finale",
+      "story.act01.solaris.mining.stage_done"
+    ]
+  },
+  "dependencies": {
+    "events": ["flight.entered_region"],
+    "consequences": ["story.stage", "story.flag", "faction.reputation"],
+    "narratives": []
+  },
+  "narrative": {
+    "id": "act01.solaris.mining",
+    "version": 1,
+    "startNodeId": "act01.solaris.mining.node.start",
+    "nodes": [
+      {
+        "id": "act01.solaris.mining.node.start",
+        "textKey": "story.act01.solaris.mining.start",
+        "enterEventType": "flight.entered_region",
+        "choices": [
+          {
+            "id": "act01.solaris.mining.choice.give_tidari",
+            "targetNodeId": "act01.solaris.mining.node.finale",
+            "consequences": ["faction.reputation"]
+          },
+          {
+            "id": "act01.solaris.mining.choice.give_omnicorp",
+            "targetNodeId": "act01.solaris.mining.node.finale",
+            "consequences": ["faction.reputation"]
+          }
+        ]
+      },
+      {
+        "id": "act01.solaris.mining.node.finale",
+        "textKey": "story.act01.solaris.mining.finale",
+        "choices": [
+          {
+            "id": "act01.solaris.mining.choice.save_mark",
+            "targetNodeId": "act01.solaris.mining.node.stage_done",
+            "consequences": ["story.flag"]
+          },
+          {
+            "id": "act01.solaris.mining.choice.discard",
+            "targetNodeId": "act01.solaris.mining.node.stage_done",
+            "consequences": []
+          }
+        ]
+      },
+      {
+        "id": "act01.solaris.mining.node.stage_done",
+        "textKey": "story.act01.solaris.mining.stage_done",
+        "enterConsequences": ["story.stage"],
+        "terminal": true
+      }
+    ]
+  }
+}
