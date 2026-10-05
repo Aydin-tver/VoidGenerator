@@ -1,0 +1,49 @@
+[
+  {
+    "phase": "A",
+    "name": "Systems",
+    "items": [
+      "information/evidence gameplay",
+      "faction progression",
+      "NPC memory",
+      "consequence propagation",
+      "station/world state",
+      "equipment capabilities"
+    ]
+  },
+  {
+    "phase": "B",
+    "name": "Content Foundation",
+    "items": [
+      "3 complete faction verticals",
+      "15 recurring NPCs",
+      "6 major stations",
+      "30 discoveries",
+      "50 evidence/lore nodes"
+    ]
+  },
+  {
+    "phase": "C",
+    "name": "Quest Density",
+    "items": [
+      "main story expansion",
+      "faction chains",
+      "character arcs",
+      "local stories",
+      "exploration",
+      "cross-faction conflicts"
+    ]
+  },
+  {
+    "phase": "D",
+    "name": "Polish",
+    "items": [
+      "replay divergence",
+      "world response",
+      "contradictory information",
+      "balance",
+      "QA",
+      "performance"
+    ]
+  }
+]

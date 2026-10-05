@@ -1,0 +1,11 @@
+{
+  "id": "msr15_05_next_lead",
+  "title": "A Pattern Without a Name",
+  "issuer": "narrative",
+  "station": "solaris",
+  "prerequisites": [
+    "knowledge.ferrum_pattern_observed"
+  ],
+  "terminal": true,
+  "design_note": "Provides a question, not a final explanation."
+}

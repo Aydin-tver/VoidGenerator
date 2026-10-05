@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "reads": [
+    "story_flag",
+    "evidence",
+    "character_context",
+    "station_context",
+    "faction_context",
+    "gameplay_capability",
+    "current_location"
+  ],
+  "writes": [
+    "mission_unlock",
+    "objective_complete",
+    "evidence_add",
+    "story_flag_set",
+    "character_context_update",
+    "station_context_update"
+  ],
+  "rules": [
+    "host_authority_preserved",
+    "no_fake_success",
+    "idempotent_effects",
+    "explicit_unsupported_operation"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "T04_save_load",
+  "steps": [
+    "report",
+    "save",
+    "load",
+    "revisit tidari"
+  ],
+  "expect": [
+    "report memory preserved",
+    "no duplicate trust"
+  ]
+}

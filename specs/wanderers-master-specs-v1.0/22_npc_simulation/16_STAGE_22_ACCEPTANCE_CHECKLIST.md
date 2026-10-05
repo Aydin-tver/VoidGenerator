@@ -1,0 +1,21 @@
+# Stage 22 Acceptance Checklist
+
+- [ ] NPC state model
+- [ ] Event-based memory
+- [ ] Goal system
+- [ ] Needs / fears / constraints
+- [ ] Multi-dimensional relationships
+- [ ] Secrets
+- [ ] Partial / incorrect beliefs
+- [ ] Reaction engine
+- [ ] NPC-generated missions
+- [ ] Faction integration
+- [ ] Skills interaction
+- [ ] Equipment interaction
+- [ ] Relationship progression
+- [ ] Event-driven NPC world actions
+- [ ] Dialogue handoff
+- [ ] Nova implementation
+- [ ] Tidari implementation
+- [ ] Lena implementation
+- [ ] Replay-different NPC states

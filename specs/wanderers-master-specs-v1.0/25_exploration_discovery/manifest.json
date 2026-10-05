@@ -1,0 +1,35 @@
+{
+  "stage": 25,
+  "name": "Exploration & Discovery",
+  "version": "1.0",
+  "status": "design_and_vertical_slice_spec",
+  "depends_on": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "next_stage": 26,
+  "core_model": "RUMOR/OBSERVATION -> CURIOSITY -> INVESTIGATION -> DISCOVERY -> INTERPRETATION -> CHOICE -> CONSEQUENCE",
+  "targets": {
+    "discovery_archetypes": 10,
+    "mystery_seeds": 20,
+    "hidden_locations": 10,
+    "hidden_route_opportunities": 10
+  },
+  "acceptance": {
+    "non_quest_discovery": true,
+    "rumor_uncertainty": true,
+    "anomaly_evidence": true,
+    "skill_equipment_variation": true,
+    "hidden_locations_routes": true,
+    "future_mission_hooks": true,
+    "risk": true,
+    "knowledge_rewards": true,
+    "no_universal_gps": true
+  }
+}

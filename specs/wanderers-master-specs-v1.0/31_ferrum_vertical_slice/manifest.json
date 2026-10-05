@@ -1,0 +1,13 @@
+{
+  "stage": 31,
+  "name": "Ferrum Systemic Vertical Slice Production",
+  "version": "1.0",
+  "purpose": "production integration of stages 17-30",
+  "stations": 3,
+  "recurring_npcs": 8,
+  "factions": 4,
+  "core_quests": 6,
+  "required_approaches": 3,
+  "signature_system": "Information Gameplay",
+  "release_gate": "docs/17_release_gate.md"
+}

@@ -1,0 +1,27 @@
+{
+  "preflight": [
+    "repository source available",
+    "branch identified",
+    "baseline tests recorded"
+  ],
+  "runtime": [
+    "event catalog verified",
+    "mission runtime verified",
+    "dialogue runtime verified",
+    "save/load verified",
+    "journal/replay verified"
+  ],
+  "content": [
+    "all Stage 11 IDs resolve",
+    "all localization keys resolve",
+    "all effects resolve"
+  ],
+  "qa": [
+    "fresh save",
+    "save/load",
+    "branch",
+    "replay",
+    "failure",
+    "performance"
+  ]
+}

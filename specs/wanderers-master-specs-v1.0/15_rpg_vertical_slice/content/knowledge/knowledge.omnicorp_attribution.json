@@ -1,0 +1,9 @@
+{
+  "id": "knowledge.omnicorp_attribution",
+  "state": "CONTRADICTED",
+  "sources": [
+    "tidari.registry",
+    "route_amendment"
+  ],
+  "unlocks": []
+}

@@ -1,0 +1,10 @@
+{
+  "id": "knowledge.unsigned_route_amendment",
+  "state": "CONFIRMED",
+  "sources": [
+    "tidari.registry"
+  ],
+  "unlocks": [
+    "msr15_03_ferrum_anomaly"
+  ]
+}

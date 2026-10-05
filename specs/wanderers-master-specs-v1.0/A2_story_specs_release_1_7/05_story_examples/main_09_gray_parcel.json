@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "mission.main_09.gray_parcel",
+  "version": 1,
+  "titleKey": "mission.main_09.gray_parcel.title",
+  "descriptionKey": "mission.main_09.gray_parcel.description",
+  "tags": ["mission", "salvage", "reputation"],
+  "steps": [
+    {
+      "id": "recover_parcel",
+      "displayKey": "mission.main_09.gray_parcel.recover_parcel",
+      "locationKey": "location.nova.derelict_belt",
+      "clueKey": "clue.main_09.emitter_echo",
+      "sourceKey": "source.free_merchants.contract",
+      "count": 1,
+      "event": {
+        "type": "cargo.salvaged",
+        "path": "sourceId",
+        "equals": "wreck.gray_parcel_09"
+      }
+    },
+    {
+      "id": "dock_nova",
+      "displayKey": "mission.main_09.gray_parcel.dock_nova",
+      "locationKey": "location.nova",
+      "clueKey": "clue.main_09.drop_contact",
+      "sourceKey": "source.free_merchants.contract",
+      "count": 1,
+      "event": {
+        "type": "station.docked",
+        "path": "stationId",
+        "equals": "station_nova"
+      }
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "success",
+      "effects": [
+        {"type": "economy.credit", "payload": {"amount": 450}},
+        {"type": "faction.reputation", "payload": {"factionId": "free_merchants", "amount": 5}}
+      ]
+    }
+  ]
+}

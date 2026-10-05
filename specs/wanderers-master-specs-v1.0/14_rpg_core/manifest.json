@@ -1,0 +1,15 @@
+{
+  "stage": "14",
+  "version": "1.0",
+  "name": "RPG Core Systems",
+  "systems": [
+    "information_knowledge",
+    "faction_progression",
+    "npc_memory",
+    "consequence_propagation",
+    "world_station_reactivity",
+    "equipment_narrative_capability"
+  ],
+  "next_stage": "RPG Core Vertical Slice Implementation",
+  "principle": "build systemic depth before multiplying content"
+}

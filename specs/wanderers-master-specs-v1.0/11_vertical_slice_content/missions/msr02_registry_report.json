@@ -1,0 +1,24 @@
+{
+  "id": "mission.msr02_registry_report",
+  "version": 1,
+  "type": "investigative",
+  "act": "A1",
+  "issuer": "character.dispatcher_tidari",
+  "station": "station.solaris",
+  "requires": [
+    "mission.msr01_convoy_irregularity"
+  ],
+  "objectives": [
+    {
+      "id": "obj.review_registry",
+      "event": "trade.completed"
+    }
+  ],
+  "success_effects": [
+    "consequence.tidari_registry_access"
+  ],
+  "dialogue": [
+    "dialogue.solaris.tidari.registry"
+  ],
+  "choice": "choice.route_discrepancy"
+}

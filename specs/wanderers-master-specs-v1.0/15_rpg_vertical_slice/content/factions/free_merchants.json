@@ -1,0 +1,13 @@
+{
+  "id": "free_merchants",
+  "initial": {
+    "reputation": 0,
+    "trust": 0
+  },
+  "changes": [
+    {
+      "effect": "consequence.withheld_route_amendment",
+      "trust": 5
+    }
+  ]
+}

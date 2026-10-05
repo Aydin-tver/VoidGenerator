@@ -1,0 +1,20 @@
+{
+  "id": "consequence.withheld_route_amendment",
+  "effects": [
+    {
+      "type": "faction.trust",
+      "target": "free_merchants",
+      "delta": 5
+    },
+    {
+      "type": "npc.memory",
+      "target": "lena_voss",
+      "key": "route_amendment_withheld"
+    },
+    {
+      "type": "station.state",
+      "target": "solaris",
+      "value": "merchant_discussion"
+    }
+  ]
+}

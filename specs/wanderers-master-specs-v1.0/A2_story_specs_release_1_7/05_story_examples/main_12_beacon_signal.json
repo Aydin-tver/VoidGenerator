@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "mission.main_12.beacon_signal",
+  "version": 1,
+  "titleKey": "mission.main_12.beacon_signal.title",
+  "descriptionKey": "mission.main_12.beacon_signal.description",
+  "tags": ["mission", "scan", "thread"],
+  "steps": [
+    {
+      "id": "scan_beacon",
+      "displayKey": "mission.main_12.beacon_signal.scan_beacon",
+      "locationKey": "location.nova.beacon_drift",
+      "clueKey": "clue.main_12.distress_carrier",
+      "sourceKey": "source.tidari.contract",
+      "count": 1,
+      "event": {
+        "type": "scan.discovery_completed",
+        "path": "targetId",
+        "equals": "beacon_drift_signal_12"
+      }
+    },
+    {
+      "id": "assist_survivors",
+      "displayKey": "mission.main_12.beacon_signal.assist_survivors",
+      "locationKey": "location.nova.beacon_drift",
+      "clueKey": "clue.main_12.resonance_handshake",
+      "sourceKey": "source.tidari.contract",
+      "count": 1,
+      "event": {
+        "type": "thread.resonance_detected",
+        "path": "locationId",
+        "equals": "location.nova.beacon_drift"
+      }
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "success",
+      "effects": [
+        {"type": "economy.credit", "payload": {"amount": 560}},
+        {"type": "faction.reputation", "payload": {"factionId": "tidari", "amount": 5}}
+      ]
+    }
+  ]
+}

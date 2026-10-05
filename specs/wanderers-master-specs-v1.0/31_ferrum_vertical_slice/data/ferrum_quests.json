@@ -1,0 +1,30 @@
+{
+  "quests": [
+    {
+      "id": "ferrum.convoy_irregularity",
+      "type": "systemic_investigation",
+      "approaches": [
+        "sensors",
+        "commerce",
+        "npc",
+        "faction",
+        "exploration",
+        "engineering",
+        "ignore"
+      ],
+      "minimum_agency_score": 4
+    },
+    {
+      "id": "ferrum.cross_faction_pressure",
+      "type": "systemic_conflict",
+      "approaches": [
+        "align",
+        "mediate",
+        "exploit",
+        "expose",
+        "refuse"
+      ],
+      "minimum_agency_score": 4
+    }
+  ]
+}

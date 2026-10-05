@@ -1,0 +1,43 @@
+[
+  {
+    "id": "IT-001",
+    "name": "MSR01_real_event_progression",
+    "precondition": "source path confirmed",
+    "assertion": "convoy events advance actual mission objective"
+  },
+  {
+    "id": "IT-002",
+    "name": "IT-002_evidence_persistence",
+    "assertion": "route and scan evidence survive save/load"
+  },
+  {
+    "id": "IT-003",
+    "name": "IT-003_two_source_gate",
+    "assertion": "MSR04 unavailable until both evidence objects exist"
+  },
+  {
+    "id": "IT-004",
+    "name": "IT-004_branch_persistence",
+    "assertion": "REPORT/WITHHOLD remains visible in later context"
+  },
+  {
+    "id": "IT-005",
+    "name": "IT-005_replay_idempotency",
+    "assertion": "replay never duplicates one-time effects"
+  },
+  {
+    "id": "IT-006",
+    "name": "IT-006_unsupported_effect",
+    "assertion": "unsupported adapter operation fails explicitly"
+  },
+  {
+    "id": "IT-007",
+    "name": "IT-007_no_frame_scan",
+    "assertion": "narrative runtime is event-driven"
+  },
+  {
+    "id": "IT-008",
+    "name": "IT-008_no_gps",
+    "assertion": "no route pointer is introduced by narrative integration"
+  }
+]

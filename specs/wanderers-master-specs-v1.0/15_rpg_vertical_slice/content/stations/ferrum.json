@@ -1,0 +1,10 @@
+{
+  "id": "ferrum",
+  "state": "unknown",
+  "transitions": [
+    {
+      "on": "knowledge.ferrum_pattern_observed",
+      "to": "anomaly_documented"
+    }
+  ]
+}

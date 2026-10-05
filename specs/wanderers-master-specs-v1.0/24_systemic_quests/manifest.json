@@ -1,0 +1,27 @@
+{
+  "stage": 24,
+  "name": "Systemic Quests",
+  "version": "1.0",
+  "status": "design_and_vertical_slice_spec",
+  "depends_on": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "next_stage": 25,
+  "core_model": "PROBLEM + GOAL + INFORMATION + APPROACH + ACTION + OUTCOME + CONSEQUENCES",
+  "acceptance": {
+    "major_quest_approaches_min": 3,
+    "noncombat_approaches": true,
+    "fail_forward": true,
+    "partial_success": true,
+    "consequence_propagation": true,
+    "player_created_objectives": true,
+    "dynamic_world_causes": true,
+    "branch_convergence": true
+  }
+}

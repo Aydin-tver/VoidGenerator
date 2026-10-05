@@ -1,0 +1,36 @@
+{
+  "stage": 21,
+  "name": "Faction Simulation",
+  "version": "1.0",
+  "status": "design_and_vertical_slice_spec",
+  "depends_on": [
+    17,
+    18,
+    19,
+    20
+  ],
+  "next_stage": 22,
+  "targets": [
+    "factions as systemic actors",
+    "internal groups",
+    "ranks and privileges",
+    "faction conflicts",
+    "economic interests",
+    "technology access",
+    "secrets and intelligence",
+    "dynamic reactions",
+    "faction-generated missions",
+    "NPC integration"
+  ],
+  "acceptance": {
+    "internal_groups": true,
+    "reputation_not_only_variable": true,
+    "multiple_conflict_outcomes": true,
+    "faction_generated_missions": true,
+    "economic_consequences": true,
+    "technology_access": true,
+    "secret_leverage": true,
+    "npc_reflection": true,
+    "viable_faction_strategies": 4
+  }
+}

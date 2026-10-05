@@ -1,0 +1,15 @@
+{
+  "id": "T02_withhold_path",
+  "steps": [
+    "complete msr15_01",
+    "open registry report",
+    "choose withhold",
+    "complete ferrum scan",
+    "return solaris"
+  ],
+  "expect": [
+    "free_merchants.trust=5",
+    "lena.remembers_discretion",
+    "solaris=merchant_discussion"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "stage": 19,
+  "name": "Skills & Specializations",
+  "version": "1.0",
+  "status": "design_and_vertical_slice_spec",
+  "depends_on": [
+    17,
+    18
+  ],
+  "next_stage": 20,
+  "skill_axes": [
+    "PILOTING",
+    "ENGINEERING",
+    "SENSORS",
+    "COMMERCE",
+    "SOCIAL_NEGOTIATION",
+    "COVERT_OPERATIONS"
+  ],
+  "skill_levels": "0-5",
+  "acceptance": {
+    "skill_based_approaches_major_mission": 3,
+    "distinct_example_builds": 4,
+    "graded_skill_outcomes": true,
+    "numeric_only_skills": false
+  }
+}

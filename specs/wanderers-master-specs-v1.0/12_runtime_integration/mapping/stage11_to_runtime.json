@@ -1,0 +1,45 @@
+{
+  "mission.msr01_convoy_irregularity": {
+    "events": [
+      "convoy.detected",
+      "convoy.escort_tick",
+      "convoy.protected"
+    ],
+    "effects": [
+      "consequence.lena_trust_report"
+    ]
+  },
+  "mission.msr02_registry_report": {
+    "events": [
+      "trade.completed"
+    ],
+    "effects": [
+      "consequence.tidari_registry_access",
+      "consequence.private_discrepancy"
+    ]
+  },
+  "mission.msr03_ferrum_anomaly": {
+    "events": [
+      "scan.discovery_completed"
+    ],
+    "effects": [
+      "evidence.ferrum_scan_anomaly"
+    ]
+  },
+  "mission.msr04_nova_interpretation": {
+    "events": [
+      "station.docked"
+    ],
+    "effects": [
+      "evidence.cross_source_pattern"
+    ]
+  },
+  "mission.msr05_sigma_signal": {
+    "events": [
+      "thread.resonance_detected"
+    ],
+    "effects": [
+      "evidence.sigma_signal_fragment"
+    ]
+  }
+}

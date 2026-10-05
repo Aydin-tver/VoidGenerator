@@ -1,0 +1,11 @@
+{
+  "id": "T06_replay_idempotency",
+  "steps": [
+    "report",
+    "reload",
+    "replay report event"
+  ],
+  "expect": [
+    "trust does not increase twice"
+  ]
+}

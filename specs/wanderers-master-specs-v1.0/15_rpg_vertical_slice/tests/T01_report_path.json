@@ -1,0 +1,16 @@
+{
+  "id": "T01_report_path",
+  "steps": [
+    "complete msr15_01",
+    "open registry report",
+    "choose report",
+    "complete ferrum scan",
+    "return solaris"
+  ],
+  "expect": [
+    "tidari.trust=10",
+    "omnicorp.trust=-5",
+    "tidari.remembers_report",
+    "solaris=under_investigation"
+  ]
+}

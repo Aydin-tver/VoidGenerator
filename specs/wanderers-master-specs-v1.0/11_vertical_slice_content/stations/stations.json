@@ -1,0 +1,34 @@
+[
+  {
+    "id": "station.solaris",
+    "name_key": "station.solaris.name",
+    "factions": [
+      "faction.free_merchants",
+      "faction.tidari"
+    ],
+    "content_hooks": [
+      "dialogue.solaris.lena.convoy",
+      "dialogue.solaris.tidari.registry"
+    ]
+  },
+  {
+    "id": "station.ferrum",
+    "name_key": "station.ferrum.name",
+    "factions": [
+      "faction.free_merchants"
+    ],
+    "content_hooks": [
+      "dialogue.ferrum.nova.anomaly"
+    ]
+  },
+  {
+    "id": "station.nova",
+    "name_key": "station.nova.name",
+    "factions": [
+      "faction.free_merchants"
+    ],
+    "content_hooks": [
+      "dialogue.nova.nova.followup"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "id": "mission.msr05_sigma_signal",
+  "version": 1,
+  "type": "main_story",
+  "act": "A2",
+  "issuer": "character.engineer_nova",
+  "station": "station.nova",
+  "requires": [
+    "mission.msr04_nova_interpretation"
+  ],
+  "requires_evidence": [
+    "evidence.cross_source_pattern"
+  ],
+  "objectives": [
+    {
+      "id": "obj.follow_signal",
+      "event": "thread.resonance_detected"
+    }
+  ],
+  "success_effects": [
+    "consequence.sigma_lead_created"
+  ],
+  "success_evidence": [
+    "evidence.sigma_signal_fragment"
+  ],
+  "dialogue": [
+    "dialogue.nova.nova.followup"
+  ]
+}

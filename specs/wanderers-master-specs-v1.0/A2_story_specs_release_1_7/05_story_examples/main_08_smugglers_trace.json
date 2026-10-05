@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "mission.main_08.smugglers_trace",
+  "version": 1,
+  "titleKey": "mission.main_08.smugglers_trace.title",
+  "descriptionKey": "mission.main_08.smugglers_trace.description",
+  "tags": ["mission", "combat", "smuggler"],
+  "steps": [
+    {
+      "id": "scan_trace",
+      "displayKey": "mission.main_08.smugglers_trace.scan_trace",
+      "locationKey": "location.haven.smuggler_wreck_field",
+      "clueKey": "clue.main_08.cargo_manifest",
+      "sourceKey": "source.omnicorp.contract",
+      "count": 1,
+      "event": {
+        "type": "scan.discovery_completed",
+        "path": "targetId",
+        "equals": "wreck_smuggler_cache_08"
+      }
+    },
+    {
+      "id": "defend_cache",
+      "displayKey": "mission.main_08.smugglers_trace.defend_cache",
+      "locationKey": "location.haven.smuggler_wreck_field",
+      "clueKey": "clue.main_08.hostile_skiff_signature",
+      "sourceKey": "source.omnicorp.contract",
+      "count": 1,
+      "event": {
+        "type": "combat.victory",
+        "path": "encounterId",
+        "equals": "encounter.smuggler_skiff_08"
+      }
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "success",
+      "effects": [
+        {"type": "economy.credit", "payload": {"amount": 640}},
+        {"type": "faction.reputation", "payload": {"factionId": "omnicorp", "amount": 5}}
+      ]
+    }
+  ]
+}

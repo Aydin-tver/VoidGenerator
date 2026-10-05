@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "mission.main_06.honest_route",
+  "version": 1,
+  "titleKey": "mission.main_06.honest_route.title",
+  "descriptionKey": "mission.main_06.honest_route.description",
+  "tags": ["mission", "trade", "reputation"],
+  "steps": [
+    {
+      "id": "scan_solaris",
+      "displayKey": "mission.main_06.honest_route.scan_solaris",
+      "locationKey": "location.solaris",
+      "clueKey": "clue.main_06.registry_route_data",
+      "sourceKey": "source.tidari.contract",
+      "count": 1,
+      "event": {
+        "type": "scan.discovery_completed",
+        "path": "targetId",
+        "equals": "station_solaris"
+      }
+    },
+    {
+      "id": "dock_solaris",
+      "displayKey": "mission.main_06.honest_route.dock_solaris",
+      "locationKey": "location.solaris",
+      "clueKey": "clue.main_06.handover_point",
+      "sourceKey": "source.tidari.contract",
+      "count": 1,
+      "event": {
+        "type": "station.docked",
+        "path": "stationId",
+        "equals": "station_solaris"
+      }
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "success",
+      "effects": [
+        {"type": "economy.credit", "payload": {"amount": 380}},
+        {"type": "faction.reputation", "payload": {"factionId": "tidari", "amount": 5}}
+      ]
+    }
+  ]
+}

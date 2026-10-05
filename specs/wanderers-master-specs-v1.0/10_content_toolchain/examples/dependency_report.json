@@ -1,0 +1,18 @@
+{
+  "content_id": "mission.msr04_nova_interpretation",
+  "dependencies": [
+    "evidence.route_correction_unsigned",
+    "evidence.ferrum_scan_anomaly",
+    "dialogue.ferrum.nova.evidence_comparison",
+    "character.engineer_nova",
+    "station.ferrum"
+  ],
+  "dependents": [
+    "mission.msr05_sigma_signal",
+    "evidence.cross_source_pattern"
+  ],
+  "unresolved_references": [],
+  "unsupported_capabilities": [],
+  "localization_gaps": [],
+  "warnings": []
+}

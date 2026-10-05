@@ -1,0 +1,23 @@
+# Stage 25 Acceptance Checklist
+
+- [ ] Discovery system
+- [ ] Discovery types
+- [ ] Discovery sources
+- [ ] Rumor system
+- [ ] Anomaly system
+- [ ] Hidden locations
+- [ ] Hidden routes
+- [ ] Equipment interaction
+- [ ] Skill interaction
+- [ ] Evidence generation
+- [ ] Mystery chains
+- [ ] Exploration rewards
+- [ ] Exploration risks
+- [ ] Non-quest discovery
+- [ ] Authoring schema
+- [ ] Ghost Relay vertical slice
+- [ ] Discovery Director
+- [ ] 10 discovery archetypes
+- [ ] 20 mystery seeds
+- [ ] 10 hidden locations
+- [ ] 10 hidden route opportunities

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "evidence.route_correction_unsigned",
+    "type": "documentary",
+    "source": "event.flight.entered_region",
+    "requires": [],
+    "proves": [
+      "unsigned route amendment exists"
+    ],
+    "does_not_prove": [
+      "actor",
+      "motive",
+      "SIGMA",
+      "Thread"
+    ]
+  },
+  {
+    "id": "evidence.ferrum_scan_anomaly",
+    "type": "technical",
+    "source": "event.scan.discovery_completed",
+    "requires": [],
+    "proves": [
+      "matching structural/timing anomaly"
+    ],
+    "does_not_prove": [
+      "deliberate manipulation",
+      "SIGMA",
+      "Thread"
+    ]
+  },
+  {
+    "id": "evidence.cross_source_pattern",
+    "type": "interpretation",
+    "source": "narrative.synthesis",
+    "requires": [
+      "evidence.route_correction_unsigned",
+      "evidence.ferrum_scan_anomaly"
+    ],
+    "proves": [
+      "two independent records share a non-random structural/timing pattern"
+    ],
+    "does_not_prove": [
+      "identity of actor",
+      "origin of pattern"
+    ]
+  },
+  {
+    "id": "evidence.sigma_signal_fragment",
+    "type": "revelation",
+    "source": "event.thread.resonance_detected",
+    "requires": [
+      "evidence.cross_source_pattern"
+    ],
+    "proves": [
+      "an information-bearing signal correlates with the prior pattern"
+    ],
+    "does_not_prove": [
+      "who created it",
+      "what it wants"
+    ]
+  }
+]

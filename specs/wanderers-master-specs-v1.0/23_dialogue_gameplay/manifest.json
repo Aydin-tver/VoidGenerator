@@ -1,0 +1,27 @@
+{
+  "stage": 23,
+  "name": "Dialogue Gameplay",
+  "version": "1.0",
+  "status": "design_and_vertical_slice_spec",
+  "depends_on": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "next_stage": 24,
+  "core_model": "INTENT + KNOWLEDGE + NPC_STATE + SKILLS + EQUIPMENT + FACTION_PRESSURE -> DIALOGUE_OUTCOME",
+  "acceptance": {
+    "persistent_state": true,
+    "asymmetric_information": true,
+    "npc_memory": true,
+    "graded_persuasion": true,
+    "deception": true,
+    "favors_debts": true,
+    "skill_equipment_options": true,
+    "faction_pressure": true,
+    "state_driven_branching": true
+  }
+}

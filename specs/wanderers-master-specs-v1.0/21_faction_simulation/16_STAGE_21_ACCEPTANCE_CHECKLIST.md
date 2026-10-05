@@ -1,0 +1,22 @@
+# Stage 21 Acceptance Checklist
+
+- [ ] Faction state model
+- [ ] Goals
+- [ ] Resources
+- [ ] Relationships
+- [ ] Ranks
+- [ ] Privileges
+- [ ] Internal groups
+- [ ] Conflict model
+- [ ] Faction economy
+- [ ] Faction technology
+- [ ] Secrets / intelligence
+- [ ] Reaction engine
+- [ ] Faction-generated missions
+- [ ] Player faction agency
+- [ ] Skill interaction
+- [ ] Equipment interaction
+- [ ] NPC network
+- [ ] OmniCorp / Free Merchants vertical slice
+- [ ] Multiple faction strategies
+- [ ] Persistent consequences

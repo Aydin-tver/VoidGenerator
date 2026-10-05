@@ -1,0 +1,16 @@
+{
+  "stage": 18,
+  "name": "Player Agency System",
+  "version": "1.0",
+  "status": "design_and_vertical_slice_spec",
+  "depends_on": 17,
+  "next_stage": 19,
+  "core_goal": "Convert authored quest following into systemic player goal + approach + consequence gameplay.",
+  "acceptance": {
+    "major_mission_agency_score": 4,
+    "minimum_viable_approaches": 3,
+    "meaningful_outcomes": 2,
+    "delayed_consequences": 1,
+    "future_opportunities": 1
+  }
+}

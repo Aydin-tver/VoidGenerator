@@ -1,0 +1,81 @@
+{
+  "nodes": [
+    "mission.msr01_convoy_irregularity",
+    "mission.msr02_registry_report",
+    "mission.msr03_ferrum_anomaly",
+    "mission.msr04_nova_interpretation",
+    "mission.msr05_sigma_signal",
+    "dialogue.solaris.lena.convoy",
+    "dialogue.solaris.tidari.registry",
+    "dialogue.ferrum.nova.anomaly",
+    "dialogue.ferrum.nova.evidence_comparison",
+    "dialogue.nova.nova.followup",
+    "evidence.route_correction_unsigned",
+    "evidence.ferrum_scan_anomaly",
+    "evidence.cross_source_pattern",
+    "evidence.sigma_signal_fragment",
+    "character.lena_voss",
+    "character.dispatcher_tidari",
+    "character.engineer_nova",
+    "station.solaris",
+    "station.ferrum",
+    "station.nova"
+  ],
+  "edges": [
+    {
+      "from": "mission.msr01_convoy_irregularity",
+      "to": "mission.msr02_registry_report",
+      "type": "unlocks"
+    },
+    {
+      "from": "mission.msr02_registry_report",
+      "to": "mission.msr03_ferrum_anomaly",
+      "type": "unlocks"
+    },
+    {
+      "from": "mission.msr03_ferrum_anomaly",
+      "to": "mission.msr04_nova_interpretation",
+      "type": "unlocks"
+    },
+    {
+      "from": "mission.msr04_nova_interpretation",
+      "to": "mission.msr05_sigma_signal",
+      "type": "unlocks"
+    },
+    {
+      "from": "evidence.route_correction_unsigned",
+      "to": "evidence.cross_source_pattern",
+      "type": "requires"
+    },
+    {
+      "from": "evidence.ferrum_scan_anomaly",
+      "to": "evidence.cross_source_pattern",
+      "type": "requires"
+    },
+    {
+      "from": "evidence.cross_source_pattern",
+      "to": "evidence.sigma_signal_fragment",
+      "type": "requires"
+    },
+    {
+      "from": "dialogue.solaris.tidari.registry",
+      "to": "evidence.route_correction_unsigned",
+      "type": "reveals"
+    },
+    {
+      "from": "dialogue.ferrum.nova.anomaly",
+      "to": "evidence.ferrum_scan_anomaly",
+      "type": "reveals"
+    },
+    {
+      "from": "dialogue.ferrum.nova.evidence_comparison",
+      "to": "evidence.cross_source_pattern",
+      "type": "reveals"
+    },
+    {
+      "from": "dialogue.nova.nova.followup",
+      "to": "evidence.sigma_signal_fragment",
+      "type": "reveals"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "dispatcher_tidari",
+  "memory_keys": [
+    "route_amendment_reported"
+  ],
+  "baseline": {
+    "trust": 0
+  }
+}

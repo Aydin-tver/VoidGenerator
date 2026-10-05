@@ -1,0 +1,35 @@
+{
+  "id": "dialogue.solaris.lena.convoy",
+  "speaker": "character.lena_voss",
+  "station": "station.solaris",
+  "type": "character",
+  "nodes": [
+    {
+      "id": "start",
+      "line_key": "dlg.lena.convoy.start",
+      "choices": [
+        {
+          "id": "ask",
+          "line_key": "choice.ask_route",
+          "next": "route"
+        }
+      ]
+    },
+    {
+      "id": "route",
+      "line_key": "dlg.lena.convoy.route",
+      "choices": [
+        {
+          "id": "accept",
+          "line_key": "choice.accept_convoy",
+          "next": "end"
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "line_key": "dlg.lena.convoy.end",
+      "terminal": true
+    }
+  ]
+}

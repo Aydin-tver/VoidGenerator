@@ -1,0 +1,15 @@
+{
+  "id": "dlg15_lena_intro",
+  "speaker": "lena_voss",
+  "conditions": [],
+  "lines": [
+    {
+      "id": "l1",
+      "text_key": "lena.convoy_irregularity"
+    },
+    {
+      "id": "l2",
+      "text_key": "lena.ask_registry"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "STEALTH",
+  "levels": [
+    0,
+    1,
+    2
+  ],
+  "narrative_use": {
+    "2": [
+      "monitored_checkpoint_alternative"
+    ]
+  }
+}

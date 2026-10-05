@@ -1,0 +1,10 @@
+{
+  "id": "T03_capability",
+  "steps": [
+    "equip scanner level 2",
+    "complete ferrum scan"
+  ],
+  "expect": [
+    "knowledge.ferrum_pattern_observed=CORROBORATED"
+  ]
+}

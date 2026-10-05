@@ -1,0 +1,43 @@
+{
+  "stage": 27,
+  "name": "Economic RPG",
+  "version": "1.0",
+  "status": "design_and_vertical_slice_spec",
+  "depends_on": [
+    20,
+    21,
+    22,
+    24,
+    25,
+    26
+  ],
+  "next_stage": 28,
+  "core_loop": "SUPPLY -> DEMAND -> PRICE -> OPPORTUNITY -> PLAYER ACTION -> MARKET RESPONSE -> CONSEQUENCE",
+  "vertical_slice": "Ferrum Reactor Components",
+  "archetypes": [
+    "Trader",
+    "Broker",
+    "Smuggler",
+    "Salvager",
+    "Logistics Specialist",
+    "Faction Supplier",
+    "Speculator"
+  ],
+  "acceptance": {
+    "stateful_supply_demand": true,
+    "causal_prices": true,
+    "dynamic_routes": true,
+    "shortage_opportunities": true,
+    "surplus_opportunities": true,
+    "speculation": true,
+    "economic_information": true,
+    "illegal_markets": true,
+    "faction_economy": true,
+    "npc_economy": true,
+    "player_consequences": true,
+    "mission_generation": true,
+    "exploration_integration": true,
+    "telemetry": true,
+    "strategy_diversity": true
+  }
+}

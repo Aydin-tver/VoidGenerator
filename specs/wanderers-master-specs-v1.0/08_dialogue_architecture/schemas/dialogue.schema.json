@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Wanderers Dialogue Definition v0.7",
+  "type": "object",
+  "required": [
+    "id",
+    "speaker",
+    "listener",
+    "station",
+    "type",
+    "nodes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "speaker": {
+      "type": "string"
+    },
+    "listener": {
+      "type": "string"
+    },
+    "station": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "ambient",
+        "informational",
+        "character",
+        "investigative",
+        "negotiation",
+        "conflict",
+        "revelation",
+        "resolution"
+      ]
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "follow_up": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "localization_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

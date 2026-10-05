@@ -1,0 +1,9 @@
+{
+  "id": "engineer_nova",
+  "memory_keys": [
+    "ferrum_pattern_observed"
+  ],
+  "baseline": {
+    "trust": 0
+  }
+}

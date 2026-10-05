@@ -1,0 +1,32 @@
+[
+  {
+    "id": "T01",
+    "name": "save_load_empty_progress",
+    "expected": "state identical"
+  },
+  {
+    "id": "T02",
+    "name": "save_load_after_e01",
+    "expected": "evidence.route_correction_unsigned preserved"
+  },
+  {
+    "id": "T03",
+    "name": "report_branch_revisit",
+    "expected": "Lena uses report context"
+  },
+  {
+    "id": "T04",
+    "name": "withhold_branch_revisit",
+    "expected": "Lena uses private context"
+  },
+  {
+    "id": "T05",
+    "name": "duplicate_effect",
+    "expected": "one_time_effect not duplicated"
+  },
+  {
+    "id": "T06",
+    "name": "failure_recovery",
+    "expected": "mission state deterministic after reload"
+  }
+]

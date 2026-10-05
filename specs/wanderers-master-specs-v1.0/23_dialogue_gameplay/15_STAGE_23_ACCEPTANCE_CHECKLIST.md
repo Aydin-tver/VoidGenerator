@@ -1,0 +1,22 @@
+# Stage 23 Acceptance Checklist
+
+- [ ] Dialogue action model
+- [ ] Intent-driven choices
+- [ ] Knowledge-aware dialogue
+- [ ] Player/NPC knowledge separation
+- [ ] Persuasion
+- [ ] Negotiation
+- [ ] Deception
+- [ ] Information trading
+- [ ] Favors
+- [ ] Debts
+- [ ] Persistent dialogue memories
+- [ ] Faction pressure
+- [ ] Skill interaction
+- [ ] Equipment interaction
+- [ ] Dynamic context
+- [ ] State-driven branching
+- [ ] Nova vertical slice
+- [ ] Tidari vertical slice
+- [ ] Lena vertical slice
+- [ ] Replay verification

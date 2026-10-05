@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.8",
+  "story": {
+    "solaris_route_decision": null
+  },
+  "missions": {
+    "mission.msr01_convoy_irregularity": "active"
+  },
+  "evidence": {},
+  "characters": {
+    "lena_voss": {
+      "context": "normal_convoy"
+    },
+    "dispatcher_tidari": {
+      "context": "registry_normal"
+    },
+    "engineer_nova": {
+      "context": "normal"
+    }
+  },
+  "stations": {
+    "solaris": "normal",
+    "ferrum": "normal",
+    "nova": "normal"
+  },
+  "processed_effects": []
+}

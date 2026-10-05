@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "events": {
+    "convoy.detected": {
+      "source": "gameplay",
+      "narrative_use": [
+        "msr01"
+      ]
+    },
+    "convoy.escort_tick": {
+      "source": "gameplay",
+      "narrative_use": [
+        "msr01"
+      ]
+    },
+    "convoy.protected": {
+      "source": "gameplay",
+      "narrative_use": [
+        "msr01"
+      ]
+    },
+    "scan.discovery_completed": {
+      "source": "gameplay",
+      "narrative_use": [
+        "msr03"
+      ]
+    },
+    "station.docked": {
+      "source": "gameplay",
+      "narrative_use": [
+        "msr04"
+      ]
+    },
+    "thread.resonance_detected": {
+      "source": "gameplay",
+      "narrative_use": [
+        "msr05"
+      ]
+    }
+  }
+}

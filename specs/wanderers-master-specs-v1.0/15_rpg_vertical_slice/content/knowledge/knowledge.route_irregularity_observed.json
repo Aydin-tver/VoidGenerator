@@ -1,0 +1,10 @@
+{
+  "id": "knowledge.route_irregularity_observed",
+  "state": "OBSERVED",
+  "sources": [
+    "convoy.detected"
+  ],
+  "unlocks": [
+    "msr15_02_registry_report"
+  ]
+}

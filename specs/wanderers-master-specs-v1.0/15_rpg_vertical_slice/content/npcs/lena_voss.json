@@ -1,0 +1,10 @@
+{
+  "id": "lena_voss",
+  "memory_keys": [
+    "route_amendment_reported",
+    "route_amendment_withheld"
+  ],
+  "baseline": {
+    "trust": 20
+  }
+}

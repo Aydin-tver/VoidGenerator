@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Wanderers Evidence v0.9",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "source"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^evidence\\.[a-z0-9_.]+$"
+    },
+    "type": {
+      "enum": [
+        "rumor",
+        "lead",
+        "documentary",
+        "technical",
+        "physical",
+        "interpretation",
+        "revelation"
+      ]
+    },
+    "source": {
+      "type": "string"
+    },
+    "requires": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "proves": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "does_not_prove": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

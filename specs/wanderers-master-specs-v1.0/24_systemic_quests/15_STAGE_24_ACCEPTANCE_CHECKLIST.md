@@ -1,0 +1,21 @@
+# Stage 24 Acceptance Checklist
+
+- [ ] Quest problem model
+- [ ] Player goal model
+- [ ] Multiple approaches
+- [ ] Capability routing
+- [ ] Information gameplay
+- [ ] Graded outcomes
+- [ ] Fail-forward
+- [ ] Partial success
+- [ ] Consequence graph
+- [ ] Player-created objectives
+- [ ] Dynamic quest generation
+- [ ] Branch convergence
+- [ ] Skills integration
+- [ ] Equipment integration
+- [ ] Faction integration
+- [ ] NPC integration
+- [ ] Dialogue integration
+- [ ] Ferrum vertical slice
+- [ ] Replay simulation

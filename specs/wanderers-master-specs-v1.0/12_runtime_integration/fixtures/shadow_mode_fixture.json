@@ -1,0 +1,24 @@
+{
+  "fixture_id": "stage12_vertical_slice_shadow",
+  "mode": "shadow",
+  "expected_events": [
+    "convoy.detected",
+    "convoy.escort_tick",
+    "convoy.protected",
+    "scan.discovery_completed",
+    "station.docked",
+    "thread.resonance_detected"
+  ],
+  "expected_projections": [
+    "evidence.route_correction_unsigned",
+    "evidence.ferrum_scan_anomaly",
+    "evidence.cross_source_pattern",
+    "evidence.sigma_signal_fragment"
+  ],
+  "must_not_change": [
+    "credits",
+    "cargo",
+    "modules",
+    "combat_outcome"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "mission.msr02_registry_report",
+  "version": 1,
+  "type": "investigative",
+  "requires": [
+    "mission.msr01_convoy_irregularity"
+  ],
+  "start": {
+    "dialogue": "dlg.solaris.tidari.registry_report"
+  },
+  "choice": "choice.solaris.route_decision",
+  "branches": {
+    "report": {
+      "flag": "story.solaris_route_decision",
+      "value": "report",
+      "follow_up": "mission.msr03_ferrum_anomaly",
+      "context": [
+        "omnicorp.report_received",
+        "lena.player_reported"
+      ]
+    },
+    "withhold": {
+      "flag": "story.solaris_route_decision",
+      "value": "withhold",
+      "follow_up": "mission.msr03_ferrum_anomaly",
+      "context": [
+        "merchants.player_withheld",
+        "omnicorp.player_withheld"
+      ]
+    }
+  }
+}

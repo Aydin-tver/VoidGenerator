@@ -1,0 +1,13 @@
+{
+  "id": "tidari",
+  "initial": {
+    "reputation": 0,
+    "trust": 0
+  },
+  "changes": [
+    {
+      "effect": "consequence.reported_route_amendment",
+      "trust": 10
+    }
+  ]
+}
