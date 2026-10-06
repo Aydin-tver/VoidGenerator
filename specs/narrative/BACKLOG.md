@@ -7,15 +7,19 @@
 
 ## Баги графа (приоритет: софтлоки и опечатки — дешёвые фиксы, высокая отдача)
 
-| # | Проблема | Где | Риск |
+> Верификация 2026-10-06 скриптом `bin/check_quest_graph.dart` в репо Wanderers
+> (dart run bin/check_quest_graph.dart). Скрипт — постоянный инструмент: гонять
+> после каждого изменения квестов/арок/коммов.
+
+| # | Проблема | Где | Статус |
 |---|---|---|---|
-| 1 | Две точки входа в войну алгоритмов (algwar_01 и lore_main_07) — конфликт не определён | quests.json | Сюжетная нестыковка |
-| 2 | algwar_05 понижает sigmaStage до 1 → мягкий софтлок гейта Зазора (нужен prereqSigmaStage 3) | quests.json:1861 | **Софтлок** |
-| 3 | Разрыв ключа `karmcore` vs `karmacore` в originEvidence | quests.json:1251,1607,1700,1802 | Битые улики |
-| 4 | Финал «Кайрос без Реестра» достижим только через char_sera_01 (флаг zazor_identity_protected) — скрытый единственный вход | story.json | Недоступный финал |
-| 5 | Миссионные улики (verified_route, beacon_thread_echo, smuggler_route_signature) не входят в minEvidence финалов | story.json | Мёртвый контент |
-| 7 | Станции дублируются в stations.json и universe.json; mission_frontier_patrol требует station_fort_tavra, которого нет в stations.json | stations/universe.json | Битая ссылка |
-| 9 | «Верда», «Игнис», «Зазор» — локации лора вне universe.json | universe.json | Известная пустота |
+| 1 | Две точки входа в войну алгоритмов (algwar_01 и lore_main_07) — конфликт не определён | quests.json | **OPEN** — не ловится скриптом, нужен ручной ADR |
+| 2 | algwar_05 понижает sigmaStage до 1 → мягкий софтлок гейта Зазора | quests.json:2159 | **CLOSED** — рантайм клампит stage-эффекты по max (quest_repository_impl.dart:224-227), гейт Зазора имеет запасной вход zazorStage>0 (zazor_use_case.dart:13). Скрипт следит, чтобы контент не полагался на кламп (проверка downgrade) |
+| 3 | Разрыв ключа `karmcore` vs `karmacore` в originEvidence | quests.json | **CLOSED (как баг)** — рантайм-ключ последовательно `karmcore` (данные + identity_screen.dart:50). Осталась косметика: текущая гипотеза показывается сырым ключом в identity_screen.dart:132 — исправить отображение |
+| 4 | Финал «Кайрос без Реестра» — единственный источник флага zazor_identity_protected (char_sera_01) | story.json | **ACCEPTED RISK** — канон-правило 5 (LORE_CANON) запрещает второй источник без ADR. Скрипт держит это на радаре (WARN single-source) |
+| 5 | Миссионные улики не входят в minEvidence финалов | story.json | **OPEN** — решение о балансе финалов |
+| 7 | station_fort_tavra отсутствует в stations.json | stations.json | **CLOSED (как баг)** — stationById имеет fallback в universe.json (game_content_datasource.dart). Дублирование станций остаётся техдолгом |
+| 11 | **НОВОЕ (2026-10-06):** char_ila_01 недостижим — флаг lead_char_ila_01 не выдаёт никто (в comm_pools лиды есть только для lena/kade/sera; арка Илы questIds:[]) | comm_pools.json | **FIXED** — добавлен lead_ila (arcani, minRep 50) в comm_pools.json; скрипт подтверждает достижимость; 393 теста Wanderers проходят |
 
 ## Закрыто при портировании (проверить перед удалением строк)
 
@@ -26,6 +30,7 @@
 
 ## Контентные пустоты (бэклог, не блокеры)
 
+- «Верда», «Игнис», «Зазор» — локации лора вне universe.json (не на карте).
 - Хор Проклятых (choir) — фракция без единого квеста; hook уже в quest_main_14.
 - Станции/системы без лор-описаний (8 станций — сухие конфиги; у 4 стартовых описания есть).
 - Полные NPC-идентичности станций (локальные NPC/слухи/проблемы) — сделаны только rumors у 4 станций.
