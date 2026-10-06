@@ -17,7 +17,7 @@
 | 2 | algwar_05 понижает sigmaStage до 1 → мягкий софтлок гейта Зазора | quests.json:2159 | **CLOSED** — рантайм клампит stage-эффекты по max (quest_repository_impl.dart:224-227), гейт Зазора имеет запасной вход zazorStage>0 (zazor_use_case.dart:13). Скрипт следит, чтобы контент не полагался на кламп (проверка downgrade) |
 | 3 | Разрыв ключа `karmcore` vs `karmacore` в originEvidence | quests.json | **CLOSED (как баг)** — рантайм-ключ последовательно `karmcore` (данные + identity_screen.dart:50). Осталась косметика: текущая гипотеза показывается сырым ключом в identity_screen.dart:132 — исправить отображение |
 | 4 | Финал «Кайрос без Реестра» — единственный источник флага zazor_identity_protected (char_sera_01) | story.json | **ACCEPTED RISK** — канон-правило 5 (LORE_CANON) запрещает второй источник без ADR. Скрипт держит это на радаре (WARN single-source) |
-| 5 | Миссионные улики не входят в minEvidence финалов | story.json | **OPEN** — решение о балансе финалов |
+| 5 | Миссионные улики не входят в minEvidence финалов | story.json | **FIXED (2026-10-06)** — подключены тематически: thread_guardian += beacon_thread_echo; industrial_compromise += verified_route; sigma_choice += grey_parcel_handoff; unknown_answer += smuggler_route_signature. Скрипт теперь проверяет мёртвые улики (проверка 5) |
 | 7 | station_fort_tavra отсутствует в stations.json | stations.json | **CLOSED (как баг)** — stationById имеет fallback в universe.json (game_content_datasource.dart). Дублирование станций остаётся техдолгом |
 | 11 | **НОВОЕ (2026-10-06):** char_ila_01 недостижим — флаг lead_char_ila_01 не выдаёт никто (в comm_pools лиды есть только для lena/kade/sera; арка Илы questIds:[]) | comm_pools.json | **FIXED** — добавлен lead_ila (arcani, minRep 50) в comm_pools.json; скрипт подтверждает достижимость; 393 теста Wanderers проходят |
 
@@ -30,6 +30,7 @@
 
 ## Контентные пустоты (бэклог, не блокеры)
 
+- **Терминология — унифицировано 2026-10-06 по TERMINOLOGY.md:** karmcore→karmacore (11 refs: quests/lore/mysteries/identity_screen, показ гипотезы теперь через имя, не сырой ключ); «На терминале Solaris»→«Соларис»; VoiDari→Voidari (factions.dart); phantom-фракция independent удалена из journey_events.json; lore-id faction_omni/faction_merchants → faction_omnicorp/faction_free_merchants (согласовано с factions.dart); 11 заголовков war_* получили настоящий titleEn.
 - «Верда», «Игнис», «Зазор» — локации лора вне universe.json (не на карте).
 - Хор Проклятых (choir) — фракция без единого квеста; hook уже в quest_main_14.
 - Станции/системы без лор-описаний (8 станций — сухие конфиги; у 4 стартовых описания есть).
