@@ -46,6 +46,10 @@ TABLE OF CONTENTS
 
 16\. Appendices: JSON Schemas
 
+17\. Canon Binding
+
+18\. Content Budget
+
 PHILOSOPHY AND LIMITATIONS
 
 1.1 Why v2.0
@@ -62,7 +66,7 @@ AI as a Conveyor: AI generates content ONLY in valid JSON format according to a 
 
 1.3 HARD BLOCKS (Never violate)
 
-HB-01: JSON nesting depth > 2. Reason: AI loses context, debugging is impossible.
+HB-01: State model nesting depth > 2. Applies to WorldState, PlayerState and state_changes payloads only. Reason: AI loses context, debugging is impossible. Content schemas (quest/dialogue/item) may nest up to 4 levels: entity -> array -> option -> outcome.
 
 HB-02: Dynamic supply/demand simulation. Reason: Impossible to balance solo.
 
@@ -1047,6 +1051,50 @@ APPENDICES: JSON SCHEMAS
 }
 
 }
+
+CANON BINDING
+
+17.1 Authority split
+
+This document defines SYSTEMS and SCHEMAS (how the game works). The directory specs/narrative/ defines CONTENT CANON (what the game says): factions, locations, characters, mysteries, endings, terminology.
+
+Rule: any faction, location, character, evidence, or term used in generated content MUST use canonical ids and names from specs/narrative/01_lore/ (LORE_CANON.md, TERMINOLOGY.md). The faction and station names in sections 4-5 of this document (The Collective, Free Traders, Station Authority, ferrum) are ILLUSTRATIVE PLACEHOLDERS for the data model, not game content.
+
+17.2 Canonical ids (from narrative canon)
+
+factions: omnicorp, free_merchants, tidari, arcani, khadar, voidari, choir
+
+If a system needs fewer factions than the canon has (e.g. 3 active factions in the vertical slice), mark the rest as background_only in content data; do NOT invent replacements.
+
+17.3 Conflict rule
+
+If narrative canon contradicts a system rule here, the system rule wins for mechanics, and the canon must be adapted via a content change - never by adding a mechanic.
+
+CONTENT BUDGET
+
+18.1 Purpose
+
+Hard caps prevent AI-conveyor scope creep. Content beyond the budget is rejected until existing content passes Acceptance Criteria.
+
+18.2 Caps (vertical slice -> release)
+
+quests: 30-40 total (major >= 3 approaches; the 6 canonical main missions from MISSION_INVENTORY are mandatory)
+
+anchor dialogues: ~20 (one per quest decision point, per act transition)
+
+atmospheric dialogues: ~60 (8 archetypes x 4 contexts greetings + rumors)
+
+items with verbs: ~20
+
+discoveries (Convertible_Knowledge): ~15
+
+factions: 3 active (gameplay) + 4 background_only (canon)
+
+endings: 5 (per narrative canon, do not add)
+
+18.3 Rule
+
+New content type or raising a cap = change to THIS document first, then generation. Never the other way around.
 
 FINAL NOTE
 

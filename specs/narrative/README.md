@@ -6,12 +6,13 @@
 
 ## Состав
 - `01_lore/` — канон, лор-библия, терминология, граф истории, инвентарь миссий.
-- `02_gameplay_story/` — события путешествий и ограничения геймплейной петли для нарратива.
+- `GAMEPLAY_LOOP.md` — контракт игровой петли, journey events, вертикальный срез 15 мин.
 - `05_story_examples/` — репрезентативные narrative units как шаблоны.
+- `BACKLOG.md` — открытые проблемы графа и контентные пустоты.
 
 ## Рекомендуемый порядок чтения
 1. `01_lore/LORE_CANON.md` + `LORE_BIBLE.md` + `TERMINOLOGY.md`
 2. `01_lore/STORY_GRAPH.md`
 3. `01_lore/MISSION_INVENTORY.md`
-4. `02_gameplay_story/*`
+4. `GAMEPLAY_LOOP.md`
 5. `05_story_examples/*` как шаблоны
