@@ -1,49 +1,31 @@
 # MISSION_INVENTORY — аудит 6 геймплейных миссий (KEEP/REWRITE/MERGE/REMOVE)
 
 > По чеклисту Mission Card (Lore_Audit_1 §10) и данным gameplay_missions.json +
-> quests.json (2026-09-24). Политика Audit-1 §38: «лучше 30 сильных миссий, чем
-> 120 fetch-квестов» — REMOVE не назначен никому: объём контента мал, все миссии
-> несут хотя бы мироследствия.
+> quests.json. Первичный аудит 2026-09-24; ревизия 2026-10-06 после выполнения
+> rewrite при WIP в хост-репо: все три REWRITE реализованы (см. статусы).
+> Политика: «лучше 30 сильных миссий, чем 120 fetch-квестов».
 
 ## Сводка
 
-| Миссия | Квест | Вердикт | Причина |
+| Миссия | Квест | Вердикт | Статус |
 |---|---|---|---|
-| mission_honest_route | quest_main_06 | **KEEP** | Осмысленный narrative purpose (доказательство честного маршрута), evidence → канон. Единственная миссия с dock-target без замечаний |
-| mission_silent_convoy | quest_main_07 | **REWRITE** | Конвой не персонализирован (нигде не показан как персонаж/объект); оба objective — случайные события; текст квеста обещает 160 ₡, платит 0, миссия 240 (несинхрон) |
-| mission_smuggler_trace | quest_main_08 | **KEEP** | Сильная связь с lore (route_signature в канон), требования корабля (stealth 2, mobility 2) дают мотивацию апгрейдов (Audit-1 §26) |
-| mission_grey_package | quest_main_09 | **REWRITE** | Полностью механическая доставка: нет evidence/флага-истории, вклада в сюжет нет; 300 ₡ — самая дорогая из «серых», при этом smuggling_pressure +1 без нарративной причины |
-| mission_beacon_signal | quest_main_12 | **KEEP (усилить)** | Сильнейший лор-мост (ответ маяка = ритм Нити, evidence beacon_thread_echo); но текст квеста обещает 320 ₡, миссия платит 220 (несинхрон) |
-| mission_frontier_patrol | quest_main_14 | **REWRITE (лёгкий)** | Боевая зачистка «2 победы + док» без лор-присоединения; единственная сходящаяся по деньгам (360/360); добавить narrative purpose (зачем ОмниКорп зачистка — hook на Хор Проклятых/Зазор) |
+| mission_honest_route | quest_main_06 | **KEEP** | ✅ как было: narrative purpose (доказательство честного маршрута), evidence → канон |
+| mission_silent_convoy | m09_merchant_shield | **REWRITE → DONE** | ✅ конвой = персона Лена Восс (+арка, выбор в финале); choice point n2: «отчитаться дословно» (rep omnicorp) vs «вычеркнуть координаты» (флаг silent_route_kept, доверие Купцов); optional-перехватчик; деньги синхронны (240) |
+| mission_smuggler_trace | quest_main_08 | **KEEP** | ✅ связь с lore (route_signature → канон, mystery), требования корабля дают动机 апгрейдов; evidence smuggler_route_signature → финал unknown_answer (2026-10-06) |
+| mission_grey_package | quest_main_09 | **REWRITE → DONE** | ✅ narrative purpose (посылка под OmniCorp-аналитика на Нова, приёмка «не спрашиваем»), evidence grey_parcel_handoff → mystery Зазора + финал sigma_choice (2026-10-06), smuggling_pressure +1 обоснован |
+| mission_beacon_signal | quest_main_12 | **KEEP (усилен)** | ✅ лор-мост (маяк = ритм Нити); evidence beacon_thread_echo → mystery Нити + финал thread_guardian (2026-10-06); деньги синхронны (220) |
+| mission_frontier_patrol | quest_main_14 | **REWRITE → DONE** | ✅ narrative purpose: Хор Проклятых добрался до Тавры (hook на пустоту канона); optional salvage; требования ship capabilities |
 
-## REWRITE-детали (для Этапа 4.4)
+## Cross-cutting несинхроны
 
-### mission_silent_convoy
-- Добавить `risk`/персону: конвой = конкретный перевозчик (напр. из арки Лены Восс —
-  связывает миссию с arc_lena, Audit-1 §17 «NPC не одноразовая кнопка»);
-- Desync денег: текст квеста 160 ₡ vs миссия 240 ₡ → выровнять в одну цифру;
-- Choice point (Этап 4.5): после тихого прохода — «передать данных о конвое Тидари /
-  оставить себе» (местные последствия: rep tidari vs flag).
-
-### mission_grey_package
-- Дать narrative purpose: кто отправитель, что в посылке (чип? образец?), почему Нова;
-- Reward: добавить evidence (посылка — первый контакт с Тенью рынка → мост к Мира Сет).
-
-### mission_frontier_patrol
-- Narrative purpose: почему фронтир, кто поднимает пиратство (worldConsequences уже есть
-  piracy −3); зацепка на choir («Хор Проклятых» — фракция без квестов, пустота канона).
-
-## Cross-cutting несинхроны (исправить независимо от rewrite)
-
-| Проблема | Где | Действие |
+| Проблема | Где | Статус |
 |---|---|---|
-| Текст квеста ≠ выплата миссии (3 случая) | quest_main_07/08/12 | Выровнять цифры: текст квеста = сумма квеста+миссии, либо правка текста |
-| «Система Соларис» в honest_route (имя системы) | gameplay_missions.json:2 | «Система Солари» |
-| locationLabel «Обломки в секторах средней опасности» | grey_package | после расширения danger — сверить с фактическим спавном derelicts |
-| Миссионные evidence не в minEvidence финалов | story.json | решение владельца (Этап 5 или отказ — влияние на баланс финалов) |
+| Текст квеста ≠ выплата миссии (3 случая) | quest_main_07/08/12 | ✅ выровнено при rewrite |
+| «Система Соларис» в honest_route | gameplay_missions.json | ✅ «Система Солари» |
+| locationLabel grey_package «обломки средней опасности» | grey_package | сверено при rewrite |
+| Миссионные evidence не в minEvidence финалов | story.json | ✅ FIX 2026-10-06: 4 улики подключены к 4 финалам тематически (см. BACKLOG #5) |
 
-## Не делать в этой инвентаризации
+## Не делать
 
-- Удалять миссии (REMOVE) — объём контента мал;
-- Добавлять новые миссии до закрытия Этапов 2–4;
-- GPS-координаты и «кнопку маршрута» — запрещено quests GDD §3.11.
+- Удалять миссии (REMOVE) — объём мал, все несут worldConsequences;
+- GPS-координаты и «кнопку маршрута» — запрещено (quests GDD, канон-правило 7).
