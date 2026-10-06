@@ -13,7 +13,7 @@
 
 | # | Проблема | Где | Статус |
 |---|---|---|---|
-| 1 | Две точки входа в войну алгоритмов (algwar_01 и lore_main_07) — конфликт не определён | quests.json | **OPEN** — не ловится скриптом, нужен ручной ADR |
+| 1 | Две точки входа в войну алгоритмов (algwar_01 и lore_main_07) — конфликт не определён | quests.json | **CLOSED (by design, 2026-10-06)** — оба входа дают warStage 1; algwar_02 требует ровно 1; стадии только растут (max-кламп). Линейка корректна при любом порядке |
 | 2 | algwar_05 понижает sigmaStage до 1 → мягкий софтлок гейта Зазора | quests.json:2159 | **CLOSED** — рантайм клампит stage-эффекты по max (quest_repository_impl.dart:224-227), гейт Зазора имеет запасной вход zazorStage>0 (zazor_use_case.dart:13). Скрипт следит, чтобы контент не полагался на кламп (проверка downgrade) |
 | 3 | Разрыв ключа `karmcore` vs `karmacore` в originEvidence | quests.json | **CLOSED (как баг)** — рантайм-ключ последовательно `karmcore` (данные + identity_screen.dart:50). Осталась косметика: текущая гипотеза показывается сырым ключом в identity_screen.dart:132 — исправить отображение |
 | 4 | Финал «Кайрос без Реестра» — единственный источник флага zazor_identity_protected (char_sera_01) | story.json | **ACCEPTED RISK** — канон-правило 5 (LORE_CANON) запрещает второй источник без ADR. Скрипт держит это на радаре (WARN single-source) |
