@@ -1,8 +1,0 @@
-{
-  "dlg.lena.route_irregularity.start": "The registry sent a correction.",
-  "dlg.lena.route_irregularity.issuer": "It has a timestamp, but no issuer signature.",
-  "dlg.tidari.registry_report.start": "You want the original record?",
-  "dlg.nova.evidence_comparison.start": "You brought the registry discrepancy.",
-  "choice.report_discrepancy": "Report the discrepancy.",
-  "choice.withhold_discrepancy": "Keep the discrepancy private."
-}

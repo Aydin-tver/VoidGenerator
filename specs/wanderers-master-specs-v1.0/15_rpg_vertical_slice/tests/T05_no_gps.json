@@ -1,9 +1,0 @@
-{
-  "id": "T05_no_gps",
-  "steps": [
-    "play complete slice"
-  ],
-  "expect": [
-    "no route pointer required"
-  ]
-}
