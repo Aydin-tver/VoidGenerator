@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["location_id", "zone", "status"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "location_id": {"type": "string", "pattern": "^[a-z0-9_]+"},
+    "zone": {"type": "string"},
+    "status": {"type": "string", "enum": ["known", "hinted", "hidden"]},
+    "tags": {"type": "array", "items": {"type": "string"}}
+  }
+}

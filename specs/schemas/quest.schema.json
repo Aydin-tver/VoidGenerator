@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["quest_id", "objective", "complication", "reward_type", "approaches"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "quest_id": {"type": "string", "pattern": "^q_[a-z0-9_]+"},
+    "objective": {"type": "string", "enum": ["deliver_cargo", "eliminate_target", "steal_data", "escort_npc", "sabotage_equipment", "gather_intel", "repair_system", "negotiate_deal"]},
+    "complication": {"type": "string", "enum": ["rival_faction_interferes", "time_limit", "target_is_informant", "location_is_hostile", "cargo_is_contraband", "npc_lies", "trap_at_destination", "weather_hazard", "betrayal_after_delivery", "double_employer"]},
+    "reward_type": {"type": "string", "enum": ["credits", "faction_rep", "equipment", "knowledge_tag", "access_tag", "skill_xp"]},
+    "reward_amount": {"type": "integer", "minimum": 50, "maximum": 5000},
+    "giver_archetype": {"type": "string", "enum": ["trader", "mechanic", "informant", "guard", "smuggler", "medic", "official", "drifter"]},
+    "giver_context": {"type": "string", "enum": ["normal", "tension", "war", "crisis"]},
+    "required_tags": {"type": "array", "items": {"type": "string"}},
+    "blocking_tags": {"type": "array", "items": {"type": "string"}},
+    "approaches": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "description", "risk", "consequences"],
+        "properties": {
+          "type": {"type": "string", "enum": ["combat", "stealth", "persuasion", "hacking", "engineering", "trade"]},
+          "description": {"type": "string", "maxLength": 200},
+          "required_skill": {"type": "object", "properties": {"skill": {"type": "string"}, "level": {"type": "integer", "minimum": 1, "maximum": 5}, "specialization": {"type": "string"}}},
+          "required_specialization": {"type": "string"},
+          "risk": {"type": "string", "enum": ["low", "medium", "high"]},
+          "consequences": {"type": "object"},
+          "failure_forward": {"type": "object"}
+        }
+      }
+    },
+    "delayed_effects": {
+      "type": "array",
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["after_quests_completed", "state_changes"],
+        "properties": {
+          "after_quests_completed": {"type": "integer", "minimum": 1, "maximum": 10},
+          "state_changes": {"type": "object"},
+          "hint_dialogue_archetype": {"type": "string"},
+          "hint_line": {"type": "string", "maxLength": 200}
+        }
+      }
+    }
+  }
+}

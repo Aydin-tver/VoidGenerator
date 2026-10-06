@@ -9,6 +9,7 @@
 - `GAMEPLAY_LOOP.md` — контракт игровой петли, journey events, вертикальный срез 15 мин.
 - `05_story_examples/` — репрезентативные narrative units как шаблоны.
 - `BACKLOG.md` — открытые проблемы графа и контентные пустоты.
+- `VOICE_GUIDE.md` — голоса архетипов, banned phrases, контроль одинаковости AI-батчей.
 
 ## Рекомендуемый порядок чтения
 1. `01_lore/LORE_CANON.md` + `LORE_BIBLE.md` + `TERMINOLOGY.md`

@@ -50,6 +50,12 @@ TABLE OF CONTENTS
 
 18\. Content Budget
 
+19\. Combat Model
+
+20\. Save Contract
+
+21\. Playtest Loop
+
 PHILOSOPHY AND LIMITATIONS
 
 1.1 Why v2.0
@@ -135,6 +141,8 @@ The entire world state is a single flat JSON object with string: value keys.
 Rule: snake\_case. Example: faction\_a\_rep. Forbidden: factionARep.
 
 Rule: System prefix. Example: economy\_, faction\_, zone\_, player\_, main\_story\_. Forbidden: rep\_a.
+
+Rule: Knowledge lifecycle prefixes: rumor\_<id> (unverified) -> knows\_<id> (verified) / debunked\_<id> (refuted). Trade: sold\_<info>\_to\_<faction>, info\_leaked\_<info>. Mirror: faction\_<id>\_knows\_<info>.
 
 Rule: Booleans = is\_ or verb. Example: economy\_fuel\_shortage. Forbidden: fuel.
 
@@ -420,6 +428,16 @@ price\_modifier: 1.5
 
 override\_context: "war"
 
+5.7 Named NPCs (controlled exception to HB-03)
+
+The narrative canon has named characters with personal arcs (see specs/narrative/01_lore: LORE\_CANON §6). They are an EXCEPTION to the "no unique NPCs" rule, with a hard cap.
+
+Cap: maximum 6 named NPCs in the whole game.
+
+Model: Named NPC = archetype + unique dialogue\_tree\_id + personal memory flags (npc\_<name>\_<\* > keys in WorldState). No mood simulation, no schedules, no goals.
+
+Budget rule: each named NPC consumes ~4 anchor dialogues from the content budget (§18). A 7th named NPC requires removing one of the 6 or raising the cap in this document first.
+
 DIALOGUES
 
 6.1 Two types of dialogues
@@ -522,7 +540,7 @@ Quest = Objective + Complication + Reward + Context. AI picks from approved enum
 
 objectives: \[deliver\_cargo, eliminate\_target, steal\_data, escort\_npc, sabotage\_equipment, gather\_intel, repair\_system, negotiate\_deal]
 
-complications: \[rival\_faction\_interferes, time\_limit, target\_is\_informant, location\_is\_hostile, cargo\_is\_contraband, npc\_lies, trap\_at\_destination, weather\_hazard]
+complications: \[rival\_faction\_interferes, time\_limit, target\_is\_informant, location\_is\_hostile, cargo\_is\_contraband, npc\_lies, trap\_at\_destination, weather\_hazard, betrayal\_after\_delivery, double\_employer]
 
 rewards: \[credits, faction\_rep, equipment, knowledge\_tag, access\_tag, skill\_xp]
 
@@ -598,9 +616,39 @@ approaches: \[combat, stealth, persuasion, hacking, engineering, trade]
 
 "required\_tags": \[],
 
-"blocking\_tags": \["completed\_q\_deliver\_fuel\_complication\_rival"]
+"blocking\_tags": \["completed\_q\_deliver\_fuel\_complication\_rival"],
+
+"delayed\_effects": \[
+
+{
+
+"after\_quests\_completed": 3,
+
+"state\_changes": {"faction\_b\_rep": -10},
+
+"hint\_dialogue\_archetype": "informant",
+
+"hint\_line": "Faction B found out who rerouted their fuel. They remember."
 
 }
+
+]
+
+}
+
+7.5 Delayed Effects (cheap long-term memory)
+
+A quest MAY declare delayed\_effects: consequences that fire after N OTHER quests are completed (not real time, not ticks).
+
+Rules: max 1 delayed effect per quest; counter is global completed quest count; when fired, apply state\_changes and optionally surface one hint line via the nearest matching archetype. This makes the world "remember" without any simulation.
+
+7.6 Complication Twists
+
+Two twist complications exist to break template sameness and MUST stay rare:
+
+betrayal\_after\_delivery: giver turns on the player after success. Max 2 quests in the whole game.
+
+double\_employer: a second party secretly wants the same objective. Max 2 quests in the whole game.
 
 7.4 Anti-Rail Rule (adapted)
 
@@ -641,6 +689,24 @@ navigation: Plot route, find caches, pilot. Interacts with: Exploration, economy
 FORBIDDEN: Engineering +10% repair speed.
 
 ALLOWED: Engineering 3 -> \[new dialogue option] "Diagnose unknown reactor fault and choose safe repair path".
+
+8.4 Specializations (build identity, cheap)
+
+Total skill points per playthrough: ~12 (player maxes ~2 skills, touches 2 more). This scarcity IS the build system.
+
+At skill level 3 the player picks ONE of two specializations; the choice is permanent (no respec).
+
+engineering: A) Saboteur (bypass, disable) / B) Architect (repair, redesign)
+
+hacking: A) Ghost (stealth intrusion) / B) Forger (credentials, documents)
+
+persuasion: A) Diplomat (factions, calm) / B) Manipulator (deception, pressure)
+
+combat: A) Duelist (single target) / B) Warden (defense, escort)
+
+navigation: A) Pathfinder (hidden routes, caches) / B) Runner (speed, evasion)
+
+A specialization unlocks 1-2 exclusive verbs/options in content (required\_specialization field in checks). Content rule: a specialization gate may NEVER be the only approach (HB-08).
 
 EQUIPMENT
 
@@ -734,6 +800,8 @@ Smuggling: Buy in Zone A, sell in Zone B with multiplier. Effect: Risk: station\
 
 Bribery: Spend credits on faction\_rep. Effect: credits -= N, faction\_X\_rep += M.
 
+Rumor purchase: Buy hints from informant archetype. Effect: credits -= N, reveal one Convertible\_Knowledge location or one faction secret hint (adds hint tag, not the knowledge itself). Information is a trade good.
+
 EXPLORATION
 
 11.1 Principle: Convertible Knowledge
@@ -775,6 +843,46 @@ Every discovery has the Convertible\_Knowledge tag and at least 2 uses in other 
 }
 
 }
+
+11.3 Location Registry (flat)
+
+Discoveries and quests anchor to a flat locations.json - nothing else spatial is simulated.
+
+{
+
+"location\_id": "derelict\_ship\_sector\_4",
+
+"zone": "solari\_belt",
+
+"status": "hidden",
+
+"tags": \["derelict", "mid\_danger"]
+
+}
+
+status enum: \[known, hinted, hidden]. Rumor purchases and discoveries flip status; quests may require status != hidden.
+
+11.4 Rumor Verification (closes the loop)
+
+A rumor is a claim, not knowledge. State: rumor is stored as tag rumor\_<id>; after verification it becomes knowledge tag knows\_<id> or debunked\_<id>.
+
+verify\_rumor verb (3 resolutions, content picks one): travel-and-look (location check), second source (ask another archetype), skill check (hacking/engineering).
+
+Confirmed rumor -> knows\_<id> tag, full value. Debunked rumor -> debunked\_<id> tag + optional compensation path: return to the informant who sold it for a refund or leverage (mini-payback, memorable). A rumor that cannot be verified anywhere is INVALID content.
+
+11.5 Information as a Trade Good
+
+Knowledge tags can be sold to factions via dialogue. Exclusivity decay:
+
+First buyer: full price. state\_changes: credits += N, sold\_<info>\_to\_<faction> = true.
+
+Second buyer: half price + tag info\_leaked\_<info> (the original source stops trusting: blocking tag on that source's future info sales).
+
+Pricing is data, not code: each Convertible\_Knowledge entry may declare sellable: {base\_price: N}.
+
+11.6 Knowledge Mirror ("who knows what")
+
+Symmetric keys faction\_<id>\_knows\_<info>: when the player reveals a secret in an anchor dialogue, the faction learns it (state\_changes set the key). Used by Oracle responses ("How did they find out?..") and faction reactions. Zero new code - a naming convention over existing state\_changes.
 
 PLAYER AGENCY
 
@@ -860,6 +968,8 @@ Dev Console: /set\_flag, /add\_tag, /reload\_data, /spawn\_quest.
 
 JSON Validator Script: Automatic check on start: schema + dangling links.
 
+Implemented: bin/validate\_content.dart validates Game/Data/*.json against specs/schemas/*.schema.json (run it in CI and on every generation batch).
+
 14.3 Rules for AI Generation
 
 \- AI generates ONLY data (JSON). Developer writes code.
@@ -892,6 +1002,18 @@ ACCEPTANCE CRITERIA
 
 \[ ] Discoveries have Convertible\_Knowledge with >= 2 uses
 
+\[ ] A specialization gate is never the only approach in a quest (HB-08)
+
+\[ ] delayed\_effects: max 1 per quest, hint\_line <= 200 chars
+
+\[ ] Twist complications (betrayal/double employer) stay within caps (2+2 total)
+
+\[ ] Rumors use canonical faction/secret ids (Canon Binding §17)
+
+\[ ] Every rumor has at least one verification path (§11.4) - unverifiable rumor is invalid
+
+\[ ] Sold knowledge sets sold\_<info>\_to\_<faction>; second sale sets info\_leaked\_<info> (§11.5)
+
 15.2 For the system as a whole
 
 \[ ] Maximum JSON nesting depth <= 2
@@ -922,7 +1044,7 @@ APPENDICES: JSON SCHEMAS
 
 "objective": {"type": "string", "enum": \["deliver\_cargo", "eliminate\_target", "steal\_data", "escort\_npc", "sabotage\_equipment", "gather\_intel", "repair\_system", "negotiate\_deal"]},
 
-"complication": {"type": "string", "enum": \["rival\_faction\_interferes", "time\_limit", "target\_is\_informant", "location\_is\_hostile", "cargo\_is\_contraband", "npc\_lies", "trap\_at\_destination", "weather\_hazard"]},
+"complication": {"type": "string", "enum": \["rival\_faction\_interferes", "time\_limit", "target\_is\_informant", "location\_is\_hostile", "cargo\_is\_contraband", "npc\_lies", "trap\_at\_destination", "weather\_hazard", "betrayal\_after\_delivery", "double\_employer"]},
 
 "reward\_type": {"type": "string", "enum": \["credits", "faction\_rep", "equipment", "knowledge\_tag", "access\_tag", "skill\_xp"]},
 
@@ -948,11 +1070,41 @@ APPENDICES: JSON SCHEMAS
 
 "required\_skill": {"type": "object", "properties": {"skill": {"type": "string"}, "level": {"type": "integer", "minimum": 1, "maximum": 5}}},
 
+"required\_specialization": {"type": "string"},
+
 "risk": {"type": "string", "enum": \["low", "medium", "high"]},
 
 "consequences": {"type": "object"},
 
 "failure\_forward": {"type": "object"}
+
+}
+
+}
+
+},
+
+"delayed\_effects": {
+
+"type": "array",
+
+"maxItems": 1,
+
+"items": {
+
+"type": "object",
+
+"required": \["after\_quests\_completed", "state\_changes"],
+
+"properties": {
+
+"after\_quests\_completed": {"type": "integer", "minimum": 1, "maximum": 10},
+
+"state\_changes": {"type": "object"},
+
+"hint\_dialogue\_archetype": {"type": "string"},
+
+"hint\_line": {"type": "string", "maxLength": 200}
 
 }
 
@@ -1080,13 +1232,21 @@ Hard caps prevent AI-conveyor scope creep. Content beyond the budget is rejected
 
 quests: 30-40 total (major >= 3 approaches; the 6 canonical main missions from MISSION_INVENTORY are mandatory)
 
-anchor dialogues: ~20 (one per quest decision point, per act transition)
+anchor dialogues: ~20 (one per quest decision point, per act transition); each named NPC (§5.7) consumes ~4 of these
 
-atmospheric dialogues: ~60 (8 archetypes x 4 contexts greetings + rumors)
+atmospheric dialogues: ~150, mostly from the rumor generator
+
+rumor generator: rumor = template(faction x secret x distortion). AI fills ~40 templates x 3 distortions; a rumor may be false (canon status RUMOR), which is content, not a bug
 
 items with verbs: ~20
 
-discoveries (Convertible_Knowledge): ~15
+discoveries (Convertible\_Knowledge): ~15, anchored in locations.json
+
+locations: ~25 entries in locations.json
+
+named NPCs: 6 (canon arcs; §5.7)
+
+delayed effects: max 1 per quest; twists (betrayal\_after\_delivery, double\_employer): max 2 quests each
 
 factions: 3 active (gameplay) + 4 background_only (canon)
 
@@ -1095,6 +1255,120 @@ endings: 5 (per narrative canon, do not add)
 18.3 Rule
 
 New content type or raising a cap = change to THIS document first, then generation. Never the other way around.
+
+COMBAT MODEL
+
+19.1 Principle
+
+Combat is a skill check with consequences, not a tactics simulation. There is no HP math design, no initiative, no grid. The host game renders and resolves the fight; this spec defines only the CONTENT CONTRACT of combat encounters.
+
+19.2 Encounter contract
+
+A combat encounter is content data:
+
+{
+
+"encounter\_id": "enc\_convoy\_ambush",
+
+"opponent\_archetype": "guard",
+
+"strength": "medium",
+
+"player\_states": \["ok", "wounded", "critical"],
+
+"outcomes": {
+
+"win": {"state\_changes": {"faction\_b\_rep": -10}, "loot\_table": "pirates\_standard"},
+
+"wounded": {"state\_changes": {"player\_wounded": true}},
+
+"retreat": {"state\_changes": {"station\_ferrum\_alert\_level": 1}, "always\_available": true}
+
+},
+
+"skill\_alternatives": \[
+
+{"skill": "persuasion", "level": 3, "description": "Talk the ambush down before it starts"},
+
+{"skill": "navigation", "level": 3, "description": "Outrun them through the belt"}
+
+]
+
+}
+
+19.3 Rules
+
+\- Retreat is ALWAYS an available outcome (HB-08: combat is never a dead end).
+
+\- Wounded is a state tag with content consequences (medic services, some options closed), not a stat penalty.
+
+\- Every encounter MUST declare skill\_alternatives >= 1 (combat is one approach, never the only one).
+
+\- strength enum: \[trivial, medium, deadly]. deadly is reserved for act finales and named consequences.
+
+SAVE CONTRACT
+
+20.1 Principle
+
+Save = one flat JSON snapshot. The flat WorldState/PlayerState model makes saves trivial; this section exists to keep it that way.
+
+20.2 Structure
+
+{
+
+"save\_version": 3,
+
+"world\_state": {...flat keys...},
+
+"player\_state": {...},
+
+"completed\_quests": \["q\_deliver\_fuel\_complication\_rival"],
+
+"delayed\_queue": \[{"quest\_id": "q\_x", "fires\_after": 12, "state\_changes": {...}}],
+
+"knowledge": {"rumors": [...], "known": [...], "debunked": [...]}
+
+}
+
+20.3 Rules
+
+\- save\_version is bumped ONLY on breaking changes (removed key, changed meaning). New keys are additive and do NOT bump the version.
+
+\- On load: missing key = default value (false / 0 / "normal" / empty list). Old saves never crash on new content.
+
+\- Removed key: entry in a migrations table (rename or drop-with-default), reviewed like content.
+
+\- delayed\_queue counters persist as absolute quest-count targets, so loading older saves cannot re-fire or skip effects.
+
+\- Forbidden in saves: nested objects deeper than 2 (HB-01 applies to saves), timestamps, RNG seeds (RNG is re-seeded per session; determinism comes from state, not dice history).
+
+PLAYTEST LOOP
+
+21.1 Why
+
+Schema validation catches broken structure, not boring content. The playtest loop is the only instrument that measures "feels deep" vs "empty noise". Solo dev = the only tester, so the loop must be scripted and short.
+
+21.2 Weekly protocol (45 minutes, scheduled, non-negotiable)
+
+1\. Fresh-install slice (15 min): play the 15-minute vertical slice (narrative/GAMEPLAY\_LOOP.md §3). Any dead end or reward mismatch = release blocker.
+
+2\. Intentional break (10 min): kill a key NPC, fail a major quest on purpose, sell critical info twice. Breakers, failure\_forward and info\_leaked must fire. A softlock found here is a P0 bug.
+
+3\. Journal review (10 min): read the session journal as a story. If the log does not read as "things happened because of what I did", the consequence wiring failed, regardless of tests.
+
+4\. Voice check (10 min): read 5 random atmospheric dialogues aloud. If two archetypes sound the same, the batch is rejected and the prompt changes (never manual text edit, HB-05).
+
+21.3 Metrics (tracked in a plain file, no tooling)
+
+\- Time to first meaningful decision in a fresh run (target: < 3 min).
+
+\- Dead ends found per week (target: 0).
+
+\- % of new content passing validation on first generation (target: > 70%; lower = prompt problem, fix the prompt).
+
+21.4 Rule
+
+A playtest finding is fixed in DATA or in the PROMPT. If the same class of finding appears 3 weeks in a row, the rule that allowed it is added to Acceptance Criteria (§15) - the checklist grows, discipline does not.
 
 FINAL NOTE
 

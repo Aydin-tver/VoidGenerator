@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["item_id", "name", "type", "verbs"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "item_id": {"type": "string", "pattern": "^[a-z0-9_]+"},
+    "name": {"type": "string"},
+    "type": {"type": "string", "enum": ["equipment", "consumable", "knowledge", "quest_item"]},
+    "slot": {"type": "string", "enum": ["weapon", "scanner", "engine", "armor", "utility"]},
+    "base_stats": {"type": "object"},
+    "verbs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["verb", "description", "unlocks"],
+        "properties": {
+          "verb": {"type": "string"},
+          "description": {"type": "string"},
+          "requires": {"type": "object"},
+          "unlocks": {"type": "string"},
+          "risk": {"type": "string"}
+        }
+      }
+    },
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "faction_interaction": {"type": "object"}
+  }
+}
